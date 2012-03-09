@@ -1,0 +1,113 @@
+@import "normalize.less";
+@import "global-mobile.less";
+@import "media-queries.less";
+@import "helpers.less";
+@import "print.less";
+@import "bootstrap.less";
+
+/* TODO: Extract mixins */
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+}
+/* END MIXINS */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  &.calm .calm { display: inline !important; }
+  &.so8res .so8res { display: inline !important; }
+  &.colors .colors { display: inline !important; }
+  &.core .core { display: inline !important; }
+  &.life .life { display: inline !important; }
+}
+
+#canvas, #text, #overlay {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#canvas, #text {
+  z-index: 0;
+}
+
+#overlay {
+  z-index: 1;
+}
+
+#styles {
+  margin-top: 2em;
+  float: right;
+}
+
+#card {
+  background: white;
+  padding: 5% 3%;
+  max-width: 320px;
+  .opacity(.9);
+
+  img {
+    float: right;
+    width: 64px;
+    height: 64px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  ul {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    li {
+      list-style: none;
+      line-height: 1.8em;
+      span {
+        font-family: "Courier New", monospace;
+        display: inline-block;
+        margin-right: 1em;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  blockquote {
+    display: block;
+    margin: .2em 0;
+
+    .open, .close {
+      .opacity(.2);
+    }
+    span.quote {
+      display: none;
+    }
+    span.attribution {
+      margin-top: .2em;
+      display: none;
+      float: right;
+      .opacity(.5);
+    }
+  }
+
+  blockquote.active {
+    display: block;
+  }
+}

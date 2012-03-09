@@ -1,1 +1,94 @@
-Coming soon!
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>So8res</title>
+  <meta name="description" content="The public face of So8res">
+  <meta name="author" content="Nathaniel Soares">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet/less" href="less/style.less">
+  <script src="js/libs/less-1.2.1.min.js"></script>
+  <!-- TODO:
+       Use SimpLESS (Win/Linux/Mac) to compile your .less files to style.css,
+       then and replace the 2 lines above by this one:
+
+  <link rel="stylesheet/less" href="less/style.css">
+   -->
+
+  <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body class="calm">
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <canvas id="canvas"></canvas>
+  <div id="text"></div>
+
+  <div id="overlay">
+    <div id="styles-container" class="wrapper clearfix">
+      <div id="styles" class="btn-group" data-toggle="buttons-radio">
+        <button class="btn" title="calm"><i class="icon-home"></i></button>
+        <button class="btn" title="so8res"><i class="icon-so8res"></i></button>
+        <button class="btn" title="core"><i class="icon-chevron-right"></i></button>
+        <button class="btn" title="colors"><i class="icon-star"></i></button>
+        <button class="btn" title="life"><i class="icon-picture"></i></button>
+      </div>
+    </div>
+
+    <div id="card-container" class="wrapper clearfix">
+      <div id="card">
+        <img src="img/me.jpg">
+        <h1>Nate Soares</h1>
+        <ul>
+          <li><span class="arrow">→</span><a href="http://github.com/soares">Coder</a></li>
+          <li><span class="arrow">→</span><a href="http://lightandallhercolors.com">Author</a></li>
+          <li><span class="arrow">→</span><a href="http://simplifience.com">Simplifientist</a></li>
+          <li><span class="arrow">→</span><a href="more.html">More</a></li>
+        </ul>
+        <blockquote>
+          <span
+            class="quote calm">The
+            only way of discovering the limits of the possible is to
+            venture a little way past them into the impossible.</span><span
+            class="quote so8res">Computing
+            can never grow boring. If you find yourself plagued by
+            something rote, isolate it and automate it. Repeat as necessary
+            until you're solving an interesting problem.</span><span
+            class="quote core">The
+            lurking suspicion that something could be simplified is the
+            world's richest source of rewarding challeges.</span><span
+            class="quote colors">Controlling
+            complexity is the essence of computer programming.</span><span
+            class="quote life">The
+            reasonable man adapts himself to the world; the unreasonable
+            one persists in trying to adapt the world to himself. Therefore all
+            progress depends on the unreasonable man.</span>
+          <br>
+          <span class="attribution calm">Arthur C. Clarke</span>
+          <span class="attribution core">Edsger W. Dijkstra</span>
+          <span class="attribution colors">Brian W. Kernighan</span>
+          <span class="attribution life">George Bernard Shaw</span>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <!--TODO: Load other scripts here-->
+
+  <!--TODO: Set account info here -->
+  <script src="js/script.js"></script>
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+</body>
+</html>
