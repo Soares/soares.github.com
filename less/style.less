@@ -1,18 +1,8 @@
 @import "normalize.less";
-@import "global-mobile.less";
 @import "media-queries.less";
 @import "helpers.less";
 @import "print.less";
 @import "bootstrap.less";
-
-/* TODO: Extract mixins */
-.opacity(@opacity: 0.5) {
-  -moz-opacity: @opacity;
-  -khtml-opacity: @opacity;
-  -webkit-opacity: @opacity;
-  opacity: @opacity;
-}
-/* END MIXINS */
 
 * {
   box-sizing: border-box;
@@ -52,12 +42,6 @@ body {
   margin-right: auto;
   width: 5 * 36px;
   display: none;
-}
-
-@media only screen and (min-width: 768px) {
-  #card {
-    float: left;
-  }
 }
 
 #card {
@@ -109,5 +93,11 @@ body {
 
   blockquote.active {
     display: block;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #card {
+    float: left;
   }
 }
