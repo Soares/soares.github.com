@@ -19,29 +19,23 @@ body {
   &.life .life { display: inline !important; }
 }
 
-#canvas, #text, #overlay {
+#canvas, #text {
   height: 100%;
   left: 0;
-  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
-}
-
-#canvas, #text {
   z-index: 0;
 }
 
 #overlay {
+  margin-top: 2em;
   z-index: 1;
 }
 
 #styles {
-  margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 4em auto 0 auto;
   width: 5 * 36px;
-  display: none;
 }
 
 #card {
@@ -95,8 +89,19 @@ body {
   }
 }
 
+/* Media queries */
+
 @media only screen and (min-width: 768px) {
   #card {
     float: left;
   }
+}
+
+/* Icon extensions */
+.icon-so8res {
+  background-image: url("../img/so8res/dark.png") !important;
+  background-position: 0 0;
+}
+.icon-so8res.icon-white {
+  background-image: url("../img/so8res/white.png") !important;
 }
