@@ -1,48 +1,36 @@
-even = (num) -> num % 2 is 0
-rowOfZeroes = (num) ->
-  row = []
-  if num <= 0 then return row
-  while (num--) row[i] = 0
-  return row
-resizeArray = (arr, size, make) ->
-  diff = size - arr.length
-  if diff > 0
-    while (diff--) arr.pop()
-  else
-    while (diff++) arr.push(make())
+nub = (arr) -> # TODO: Remove duplicates (use vector equality)
+concat = (arr) -> # TODO: Flatten
 
+resize = (arr, len, empty) ->
+  delta = len - arr.length
+  if delta > 0 then arr.push(empty) for _ in [0..delta]
+  if delta < 0 then arr.pop() for _ in [abs(delta)..0] # TODO: Does this work?
+
+arrayOf = (len, empty) -> empty() for _ in [0..len]
 
 class Field
-  constructor: (width, height) ->
-    @_matrix = rowOfZeroes(width) for _ in [0..height]
-
-  width: => if @_matrix.length is 0 then 0 else @_matrix[0].length
-
-  height: => @_matrix.length
+  constructor: (@empty) ->
+    @values = []
+    @dirty = []
 
   resize: (width, height) =>
-    @_matrix = resizeArray(@_matrix, height, () -> rowOfZeroes(width))
-    resizeArray(row, width, () -> 0) for row in @_matrix
+    rows = height / TEXT_HEIGHT
+    cols = width / TEXT_WIDTH
 
-  flow: (row, col, spread) =>
-    if spread == 1
-      @increment(row, col)
-    else
-      @update(row, col+i) for i in [0..spread]
-    if row < @height()
-      @flow(row+1, if even(row) then col-1 else col, spread+1)
+    # Mark new cells as dirty
+    for y in [0..rows]
+      if y >= matrix.length
+        for x in [0..cols]
+          @dirty.push(Vector(x, y))
+      else
+        for x in [matrix[y].length..cols]
+          @dirty.push(Vector(x, y))
 
-  update: (row, col) =>
-    [a, b] = if even(row) then [-1, 0] else [0, 1]
-    x = @_matrix[row-1]?[col+a]
-    y = @_matrix[row-1]?[col+b]
-    @_matrix[row][col] = (x ? 0) + (y ? 0)
+    # Increase/decrease the size of existing rows
+    resize(row, cols, @empty) for row in @values
+    # Add/remove rows as necessary
+    resize(@values, rows, () -> arrayOf(cols, @empty))
 
-
-  reflow: =>
-    update(row, col) for col in [0..@width()] for row in [0..@height()]
-
-  increment: (row, col) =>
-    @_matrix[row]?[col] += 1
-
-  toString: => @_matrix.join("\n")
+  toString: => (row.join("") for row in @values).join("")
+  value: (vec) => @values[vec.y]?[vec.x]
+  step: => @dirty = nub(concat(@value(vec).evolve(this, vec) for vec in @dirty))
