@@ -1,8 +1,6 @@
-@field = new CursorField
+@field = new Both(new CursorField, new TriangleField)  
 $field = null
 dims = null
-
-gradient: [' ', '·','~','¢','c','»','¤','X','M','¶']
 
 @update = -> $field.text(field.step().toString())
 
@@ -28,6 +26,10 @@ $ ->
 
   $window.mousemove (e) ->
     [x, y] = position(e.clientX, e.clientY)
-    field.source = [x, y]
+    field.move(new Vector(x, y))
 
-  tick = setInterval("update()", 0)
+  $window.click (e) ->
+    [x, y] = position(e.clientX, e.clientY)
+    field.click(new Vector(x, y))
+
+  tick = setInterval("update()", 100)
