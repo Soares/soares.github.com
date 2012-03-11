@@ -12,11 +12,6 @@ body {
   font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
   font-size: 1em;
   line-height: 1.4em;
-  &.calm .calm { display: inline !important; }
-  &.so8res .so8res { display: inline !important; }
-  &.colors .colors { display: inline !important; }
-  &.core .core { display: inline !important; }
-  &.life .life { display: inline !important; }
 }
 
 #canvas, #text {
@@ -28,9 +23,37 @@ body {
   z-index: 0;
 }
 
+#field {
+  width: auto;
+  height: auto;
+  color: #f0f;
+  white-space: pre;
+  cursor: default;
+  display: inline-block;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 12px;
+}
+
 #overlay {
   margin-top: 2em;
   z-index: 1;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#card-container {
+  /* TODO: Abstract this mixin */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #styles {

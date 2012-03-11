@@ -1,24 +1,39 @@
+from = (args) ->
+  if args.length == 0
+    return args(new Vector())
+  if args.length == 1
+    if args[0] instanceof Vector
+      return args[0].pair()
+    if _.isArray args[0]
+      return args[0]
+    if _.isFunction args[0]
+      return args(args[0]())
+    if _.isNumber args[0]
+      return new Vector(args[0], args[0])
+  return [args[0], args[1]]
+
+operator = (fn) -> () ->
+  [x, y] = from(arguments)
+  new Vector(fn(@x, x), fn(@y, y))
+
 class @Vector
-  constructor: (@x, @y) ->
-  plus: (vec) => new Vector(@x+vec.x, @y+vec.y)
-  times: (vec) => new Vector(@x*vec.x, @y*vec.y)
-  minus: (vec) => new Vector(@x-vec.x, @y-vec.y)
-  over: (vec) => new Vector(@x/vec.x, @y/vec.y)
-  equals: (vec) => @x == vec.x and @y == vec.y
+  constructor: (@x=0, @y=0) ->
+  plus: operator (a, b) -> a + b
+  times: operator (a, b) -> a * b
+  scale: (s) => new Vector(@x * s, @y * s)
+  minus: operator (a, b) -> a - b
+  over: operator (a, b) -> a / b
+  equals: =>
+    [x, y] = from(arguments)
+    @x == x and @y == y
   toString: => "[" + @x + " ; " + @y + "]"
+  pair: => [@x, @y]
+  copy: => new Vector(@x, @y)
+  magSquared: => (@x * @x) + (@y * @y)
+  magnitude: => Math.sqrt(@magSquared())
+Vector.from = (v) ->
+  if v instanceof Vector then return v
+  [x, y] = from(arguments)
+  new Vector(x, y)
 
 @zero = new Vector(0, 0)
-
-l = new Vector(0, -1)
-t = new Vector(-1, 0)
-r = new Vector(0, 1)
-b = new Vector(1, 0)
-
-tl = t.plus(l)
-tr = t.plus(r)
-bl = b.plus(l)
-br = b.plus(r)
-
-@around = (vec) -> beside(vec).concat(nearby(vec));
-@beside = (vec) -> [vec.plus(l), vec.plus(t), vec.plus(r), vec.plus(b)]
-@nearby = (vec) -> [vec.plus(tl), vec.plus(tr), vec.plus(br), vec.plus(bl)]
