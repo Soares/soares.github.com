@@ -10,6 +10,7 @@
   <meta name="description" content="The public face of So8res">
   <meta name="author" content="Nathaniel Soares">
   <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="favicon.png">
 
   <link rel="stylesheet/less" href="less/style.less">
   <script src="js/libs/less-1.2.1.min.js"></script>
@@ -23,47 +24,27 @@
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
 <body class="calm">
-  <!--Version: 0.3-->
+  <!--Version: 0.4-->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <canvas id="canvas"></canvas>
-  <div id="text"></div>
+  <div id="text"><p id="field"></p></div>
 
   <div id="overlay">
     <div id="card-container" class="wrapper clearfix">
       <div id="card">
-        <img src="img/me.jpg">
+        <img src="img/me/1.jpg">
         <h1>Nate Soares</h1>
         <ul>
           <li><span class="arrow">→</span><a href="http://github.com/soares">Coder</a></li>
           <li><span class="arrow">→</span><a href="#">Author</a><!--http://lightandallhercolors.com--></li>
-          <li><span class="arrow">→</span><a href="#">Simplifientist</a><!--http://simplifience.com>Simplifientist--></li>
+          <li><span class="arrow">→</span><a href="#">Simplifientist</a><!--http://simplifience.com--></li>
           <li><span class="arrow">→</span><a href="resume.pdf">More</a></li>
         </ul>
         <blockquote>
-          <span
-            class="quote calm">The
-            only way of discovering the limits of the possible is to
-            venture a little way past them into the impossible.</span><span
-            class="quote so8res">Computing
-            can never grow boring. If you find yourself plagued by
-            something rote, isolate it and automate it. Repeat as necessary
-            until you're solving an interesting problem.</span><span
-            class="quote core">The
-            lurking suspicion that something could be simplified is the
-            world's richest source of rewarding challeges.</span><span
-            class="quote colors">Controlling
-            complexity is the essence of computer programming.</span><span
-            class="quote life">The
-            reasonable man adapts himself to the world; the unreasonable
-            one persists in trying to adapt the world to himself. Therefore all
-            progress depends on the unreasonable man.</span>
-          <br>
-          <span class="attribution calm">Arthur C. Clarke</span>
-          <span class="attribution core">Edsger W. Dijkstra</span>
-          <span class="attribution colors">Brian W. Kernighan</span>
-          <span class="attribution life">George Bernard Shaw</span>
+          The only way of discovering the limits of the possible is to
+          venture a little way past them into the impossible.
+          <br><span class="attribution">Arthur C. Clarke</span>
         </blockquote>
-
         <div id="styles" class="btn-group" data-toggle="buttons-radio" title="Coming soon!">
           <button class="btn" data-style="calm" disabled><i class="icon-home"></i></button>
           <button class="btn" data-style="so8res" disabled><i class="icon-so8res"></i></button>
@@ -73,13 +54,23 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <!--TODO: Decide if we want to use the google version (if available)-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="js/libs/underscore-1.3.1.min.js"></script>
+  <script src="js/libs/color.min.js"></script>
 
   <!--TODO: Load other scripts here-->
+  <!--TODO: Compile, combine, & minify (then stop using coffeescript)-->
+  <script src="js/libs/coffee-script.js"></script>
+  <script type="text/coffeescript" src="coffee/vector.coffee"></script>
+  <script type="text/coffeescript" src="coffee/field.coffee"></script>
+  <script type="text/coffeescript" src="coffee/tangent.coffee"></script>
+  <script type="text/coffeescript" src="coffee/calm.coffee"></script>
 
-  <!--TODO: Set account info here -->
+  <!--TODO: Set this up
   <script src="js/script.js"></script>
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -87,6 +78,6 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-
+  -->
 </body>
 </html>

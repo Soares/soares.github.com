@@ -1,48 +1,34 @@
-even = (num) -> num % 2 is 0
-rowOfZeroes = (num) ->
-  row = []
-  if num <= 0 then return row
-  while (num--) row[i] = 0
-  return row
-resizeArray = (arr, size, make) ->
-  diff = size - arr.length
-  if diff > 0
-    while (diff--) arr.pop()
-  else
-    while (diff++) arr.push(make())
+arrayOf = (len, empty) -> empty(i) for i in [0..len-1]
+
+resize = (arr, len, empty) ->
+  delta = len - arr.length
+  if delta > 0
+    args = [arr.length, 0].concat(empty(i) for i in [0...delta])
+    Array.prototype.splice.apply(arr, args)
+  else arr.splice(len, delta)
 
 
-class Field
-  constructor: (width, height) ->
-    @_matrix = rowOfZeroes(width) for _ in [0..height]
+class @Field
+  constructor: -> @values = []
+  empty: (x, y) -> 0
 
-  width: => if @_matrix.length is 0 then 0 else @_matrix[0].length
-
-  height: => @_matrix.length
-
-  resize: (width, height) =>
-    @_matrix = resizeArray(@_matrix, height, () -> rowOfZeroes(width))
-    resizeArray(row, width, () -> 0) for row in @_matrix
-
-  flow: (row, col, spread) =>
-    if spread == 1
-      @increment(row, col)
+  move: (@source) =>
+  click: (@hit) =>
+  resize: (cols, rows) =>
+    # If we're adding rows, we want to resize existing columns first
+    # and then add a bunch of already-correctly-sized columns
+    make = @empty
+    if rows >= @values.length
+      _.map(@values, (row, y) -> resize(row, cols, (x) -> make(x, y)))
+      resize(@values, rows, (y) -> arrayOf(cols, (x) -> make(x, y)))
+    # If we're dropping rows, we want to drop them before wasting time
+    # resizing the columns
     else
-      @update(row, col+i) for i in [0..spread]
-    if row < @height()
-      @flow(row+1, if even(row) then col-1 else col, spread+1)
+      resize(@values, rows, (y) -> arrayOf(cols, (x) -> make(x, y)))
+      _.map(@values, (row, y) -> resize(row, cols, (x) -> make(x, y)))
+    return this
 
-  update: (row, col) =>
-    [a, b] = if even(row) then [-1, 0] else [0, 1]
-    x = @_matrix[row-1]?[col+a]
-    y = @_matrix[row-1]?[col+b]
-    @_matrix[row][col] = (x ? 0) + (y ? 0)
-
-
-  reflow: =>
-    update(row, col) for col in [0..@width()] for row in [0..@height()]
-
-  increment: (row, col) =>
-    @_matrix[row]?[col] += 1
-
-  toString: => @_matrix.join("\n")
+  value: (x, y) => @values[y]?[x]
+  step: -> this
+  show: (val) -> val
+  toString: => ((@show val for val in row).join '' for row in @values).join '\n'

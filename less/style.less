@@ -1,18 +1,8 @@
 @import "normalize.less";
-@import "global-mobile.less";
 @import "media-queries.less";
 @import "helpers.less";
 @import "print.less";
 @import "bootstrap.less";
-
-/* TODO: Extract mixins */
-.opacity(@opacity: 0.5) {
-  -moz-opacity: @opacity;
-  -khtml-opacity: @opacity;
-  -webkit-opacity: @opacity;
-  opacity: @opacity;
-}
-/* END MIXINS */
 
 * {
   box-sizing: border-box;
@@ -22,42 +12,54 @@ body {
   font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
   font-size: 1em;
   line-height: 1.4em;
-  &.calm .calm { display: inline !important; }
-  &.so8res .so8res { display: inline !important; }
-  &.colors .colors { display: inline !important; }
-  &.core .core { display: inline !important; }
-  &.life .life { display: inline !important; }
-}
-
-#canvas, #text, #overlay {
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 #canvas, #text {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 0;
 }
 
+#field {
+  width: auto;
+  height: auto;
+  color: blue;
+  white-space: pre;
+  cursor: default;
+  display: inline-block;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 12px;
+}
+
 #overlay {
+  margin-top: 2em;
   z-index: 1;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#card-container {
+  /* TODO: Abstract this mixin */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #styles {
-  margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 4em auto 0 auto;
   width: 5 * 36px;
   display: none;
-}
-
-@media only screen and (min-width: 768px) {
-  #card {
-    float: left;
-  }
 }
 
 #card {
@@ -82,8 +84,7 @@ body {
   }
 
   ul {
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin: .5em 0;
     li {
       list-style: none;
       line-height: 1.8em;
@@ -101,24 +102,30 @@ body {
     }
   }
 
-  blockquote {
-    display: block;
-
-    .open, .close {
-      .opacity(.2);
-    }
-    span.quote {
-      display: none;
-    }
-    span.attribution {
-      margin-top: .2em;
-      display: none;
-      float: right;
-      .opacity(.5);
-    }
+  span.attribution {
+    margin-top: .2em;
+    float: right;
+    .opacity(.5);
   }
 
   blockquote.active {
     display: block;
   }
+}
+
+/* Media queries */
+
+@media only screen and (min-width: 768px) {
+  #card {
+    float: left;
+  }
+}
+
+/* Icon extensions */
+.icon-so8res {
+  background-image: url("../img/so8res/dark.png") !important;
+  background-position: 0 0;
+}
+.icon-so8res.icon-white {
+  background-image: url("../img/so8res/white.png") !important;
 }
