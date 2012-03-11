@@ -1,7 +1,7 @@
 # Display variables (tweak these for different effects)
 # gradient = [' ','·','·','·','·','·','·','o','0','0']
 gradient = [' ', '·','~','¢','c','»','¤','X','M','¶']
-CURSOR_RADIUS = 2.3
+CURSOR_RADIUS = 1
 CURSOR_ZONE = CURSOR_RADIUS * CURSOR_RADIUS
 CURSOR_INTENSITY = gradient.length
 DECAY_RATE = .15
@@ -71,8 +71,7 @@ class @CursorField extends Field
     w = @source
     for i in [0...@values.length]
       for j in [0...@values[i].length]
-        sqdist = distSquared(v, w, new Vector(j, i))
-        sqdist = rawDist([i, j], [w.x, w.y, v.x, v.y])
+        sqdist = rawDist([j, i], [w.x, w.y, v.x, v.y])
         ratio = if sqdist >= CURSOR_ZONE then 0 else 1 - (sqdist / CURSOR_ZONE)
         intensity = ratio * CURSOR_INTENSITY
         @values[i][j] = Math.max(intensity, decay(@values[i][j]))
