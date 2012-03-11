@@ -30,5 +30,7 @@ class @Field
 
   value: (x, y) => @values[y]?[x]
   step: -> this
-  show: (val) -> val
-  toString: => ((@show val for val in row).join '' for row in @values).join '\n'
+  show: (x, y, val) -> val
+  toString: =>
+    one = (y, row) => (@show(x, y, row[x]) for x in [0...row.length]).join('')
+    (one(y, @values[y]) for y in [0...@values.length]).join('\n')
