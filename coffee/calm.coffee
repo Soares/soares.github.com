@@ -1,8 +1,14 @@
 @field = new CursorField
 $field = null
 dims = null
+hue = 0.7
+COLOR_STEP = 1/256
 
-@update = -> $field.text(field.step().toString())
+@update = ->
+  hue += COLOR_STEP
+  if hue > 1 then hue = hue - 1
+  color = Color.hsl(hue, 1, .5)
+  $field.text(field.step().toString()).css('color', color)
 
 getDimensions = () ->
   $dummy = $field.clone().text('0').css(visibility: 'hidden')

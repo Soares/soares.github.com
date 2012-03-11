@@ -1,10 +1,11 @@
 # Display variables (tweak these for different effects)
 # gradient = [' ','·','·','·','·','·','·','o','0','0']
 gradient = [' ', '·','~','¢','c','»','¤','X','M','¶']
-CURSOR_RADIUS = 1
+gradient = [' ','.',':',';','c','<','«','¤','#','8']
+CURSOR_RADIUS = 10
 CURSOR_ZONE = CURSOR_RADIUS * CURSOR_RADIUS
 CURSOR_INTENSITY = gradient.length
-DECAY_RATE = .15
+DECAY_RATE = .25
 decay = (val) -> if val < .5 then 0 else val * (1-DECAY_RATE)
 
 
@@ -23,14 +24,13 @@ distSquared = (v, w, p) ->
   else if t > 1 then return p.distSquared(w)
   q = v.plus(w.minus(v).scale(t))
   return p.distSquared(q)
-rawDist = ([x3, y3], [x1, y1, x2, y2]) ->
-  if x1 == x2 and y1 == y2
-    return Math.pow(x3-x1, 2) + Math.pow(y3-y1, 2)
-  mag = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
-  u = ((x3 - x1) * (x2 - x1) + (y3 - y1) * (y2 - y1)) / mag
-  x = x1 + u * (x2-x1)
-  y = y1 + u * (y2-y1)
-  Math.pow(x-x3, 2) + Math.pow(y-y3, 2)
+distToPath = (v, w, p) ->
+  if v.equals(w) then return CURSOR_ZONE + 1
+  # Uncomment to keep the dot around:
+  if v.equals(w) then return p.distSquared(v)
+  t = p.minus(v).dot(w.minus(v)) / w.distSquared(v)
+  q = v.plus(w.minus(v).scale(t))
+  return p.distSquared(q)
 
 
 
@@ -71,7 +71,7 @@ class @CursorField extends Field
     w = @source
     for i in [0...@values.length]
       for j in [0...@values[i].length]
-        sqdist = rawDist([j, i], [w.x, w.y, v.x, v.y])
+        sqdist = distToPath(v, w, new Vector(j, i))
         ratio = if sqdist >= CURSOR_ZONE then 0 else 1 - (sqdist / CURSOR_ZONE)
         intensity = ratio * CURSOR_INTENSITY
         @values[i][j] = Math.max(intensity, decay(@values[i][j]))
