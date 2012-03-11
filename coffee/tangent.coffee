@@ -1,5 +1,5 @@
 GRADIENT = [' ','.',':',';','c','<','«','¤','#','8']
-CURSOR_RADIUS = 17
+CURSOR_RADIUS = 12
 DECAY_RATE = .25
 
 zone = CURSOR_RADIUS * CURSOR_RADIUS
