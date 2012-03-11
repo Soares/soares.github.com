@@ -1,4 +1,4 @@
-@field = new CursorField
+@field = new TangentField
 $field = null
 dims = null
 hue = 0.7

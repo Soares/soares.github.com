@@ -16,5 +16,3 @@ class @Vector
   magnitude: => Math.sqrt(@magSquared())
   distSquared: (vec) => @minus(vec).magSquared()
   distance: (vec) => Math.sqrt(@distance(vec))
-
-@zero = new Vector(0, 0)
