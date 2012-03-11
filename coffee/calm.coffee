@@ -1,4 +1,4 @@
-@field = new Both(new CursorField, new TriangleField)  
+@field = new CursorField
 $field = null
 dims = null
 
