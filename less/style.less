@@ -63,11 +63,12 @@ body {
 }
 
 #card {
-  background: white;
+  background: rgba(255,255,255,.7);
   padding: 5% 3%;
   max-width: 320px;
   margin: 0 auto;
-  .opacity(.9);
+  position: relative;
+  z-index: 1;
 
   img {
     float: right;
@@ -111,6 +112,23 @@ body {
   blockquote.active {
     display: block;
   }
+
+  #controls {
+    float: right;
+    clear: right;
+    margin-top: 1em;
+    text-align: center;
+    .clear, .control { display: none; }
+    &.going, &.paused { .clear, .control { display: inline; } }
+    &.going .control .icon-pause { display: inline block; }
+    &.going .control .icon-play { display: none; }
+    &.paused .control .icon-play { display: inline block; }
+    &.paused .control .icon-pause { display: none; }
+  }
+}
+
+button i {
+  vertical-align: middle;
 }
 
 /* Media queries */
