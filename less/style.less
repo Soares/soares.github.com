@@ -14,30 +14,17 @@ body {
   line-height: 1.4em;
 }
 
-#canvas, #text {
+#canvas, #svg {
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 0;
+  cursor: pointer;
 }
 
-#field {
-  width: auto;
-  height: auto;
-  color: blue;
-  white-space: pre;
-  cursor: default;
-  display: inline-block;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 12px;
-}
+#dot { visibility: hidden; }
 
 #overlay {
   margin-top: 2em;
@@ -125,6 +112,12 @@ body {
     &.paused .control .icon-play { display: inline block; }
     &.paused .control .icon-pause { display: none; }
   }
+
+  #fractals {
+    float: left;
+    clear: both;
+    margin-top: 1em;
+  }
 }
 
 button i {
@@ -146,4 +139,11 @@ button i {
 }
 .icon-so8res.icon-white {
   background-image: url("../img/so8res/white.png") !important;
+}
+.icon-snowflake {
+  background-image: url("../img/snowflake.png") !important;
+  background-position: 0 0;
+}
+.icon-snowflake.icon-white {
+  background-image: url("../img/snowflake-white.png") !important;
 }

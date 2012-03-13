@@ -27,6 +27,9 @@
   <!--Version: 0.6 -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <canvas id="canvas"></canvas>
+  <svg xmlns="http://www.w3.org/2000/svg" id="svg">
+    <circle id="dot" cx="0" cy="0" r="3" fill="blue"/>
+  </svg>
 
   <div id="overlay">
     <div id="card-container" class="wrapper clearfix">
@@ -51,6 +54,13 @@
           <button class="btn" data-style="colors" disabled><i class="icon-star"></i></button>
           <button class="btn" data-style="life" disabled><i class="icon-picture"></i></button>
         </div>
+        <div id="fractals" class="btn-group" data-toggle="buttons-radio">
+          <button class="btn" data-fractal="dragon"><i class="icon-fire"></i></button>
+          <button class="btn" data-fractal="eight"><i class="icon-so8res"></i></button>
+          <button class="btn" data-fractal="snowflake"><i class="icon-snowflake"></i></button>
+          <button class="btn" data-fractal="serpinsky"><i class="icon-triforce"></i></button>
+          <button class="btn" data-fractal="plant"><i class="icon-leaf"></i></button>
+        </div>
         <div id="controls" class="btn-group" data-toggle="buttons-radio">
           <button class="clear btn"><i class="icon-trash"></i></button>
           <button class="control btn"><i class="icon-play"></i><i class="icon-pause"></i></button>
@@ -70,6 +80,7 @@
   <script src="js/libs/coffee-script.js"></script>
   <script type="text/coffeescript" src="coffee/vector.coffee"></script>
   <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
+  <script type="text/coffeescript" src="coffee/dot.coffee"></script>
 
   <!--TODO: Set this up
   <script src="js/script.js"></script>

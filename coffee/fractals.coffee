@@ -50,7 +50,6 @@ class LSystem
       '[': => @states.push(turtle.save())
       ']': => turtle.restore(@states.pop())
       '0': => @iterate(turtle, size)
-    @history = []
 
   iterate: (turtle, size) =>
     reset = @reset ? => turtle.jump(@x, @y).look(@theta)
@@ -60,13 +59,13 @@ class LSystem
 
   step: (skip) =>
     symbol = @axiom.shift()
-    @history.push(symbol)
     @axiom = @axiom.concat((@rules?[symbol] ? symbol).split(''))
     unless skip
       @actions[symbol]?()
       @progress++
-    # console.log(@history.join(''), @progress, skip)
-    return this
+      return if symbol == 'F' then this else @step()
+    else
+      return this
 
 class Fractal extends LSystem
   hue: 0
@@ -165,8 +164,13 @@ class Eight extends Fractal
     turtle.jump(@x,@y).look(@theta)
     super
 
-Fractals = [Dragon, Serpinsky, Eight, Snowflake, Plant]
-current = 0
+Fractals =
+  dragon: Dragon
+  eight: Eight
+  serpinsky: Serpinsky
+  snowflake: Snowflake
+  plant: Plant
+Current = Dragon
 
 HEADING = 0
 SIZE = 1
@@ -175,6 +179,7 @@ speed = if FPS == 0 then 0 else 1000/FPS
 fractals = []
 main = undefined
 $controls = undefined
+pos = undefined
 
 update = ->
   fractal.step() for fractal in fractals
@@ -190,6 +195,10 @@ stop = ->
 $ ->
   surface = document.getElementById('canvas').getContext('2d')
   $controls = $('#controls')
+  $fractals = $('#fractals')
+  $('button', $controls.add($fractals)).click (e) -> e.stopPropagation()
+  $('button', $fractals).click ->
+    Current = Fractals[$(this).data('fractal')]
   $('.control', $controls).click (e) ->
     e.stopPropagation()
     if $controls.is('.going')
@@ -210,10 +219,10 @@ $ ->
   ).trigger('resize')
 
   $window.click (e) ->
-    $controls.addClass('going')
+    if $controls.is('.paused') then fractals = []
+    $controls.removeClass('paused').addClass('going')
     [x, y] = [e.pageX, e.pageY]
     x -= document.body.scrollLeft
     y -= document.body.scrollTop
-    fractals.push(new Fractals[current](surface, x, y, HEADING, SIZE))
-    current = (current + 1) % Fractals.length
+    fractals.push(new Current(surface, x, y, HEADING, SIZE))
     go()
