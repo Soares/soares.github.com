@@ -32,10 +32,12 @@ class LSystem
   axiom: ''
   rules: {}
   theta: 0
+  scale: 1
   angle: 1/4
   position: 0
 
   constructor: (@pen, @x, @y, heading, size) ->
+    size *= @scale
     turtle = new Turtle(pen, @x, @y, heading + @theta, size)
     @states = []
     @progress = 0
@@ -149,7 +151,19 @@ class Serpinsky extends Fractal
     turtle.turn(@angle)
     super
 
-Fractals = [Dragon, Snowflake, Serpinsky, Plant]
+class Eight extends Fractal
+  axiom: 'FX'
+  rules:
+    'X': 'F[-FFX]+FX'
+  angle: 1/12
+  depth: 8
+  scale: 6
+  theta: -1/2
+  reset: (turtle) =>
+    turtle.jump(@x,@y).look(@theta)
+    super
+
+Fractals = [Dragon, Serpinsky, Eight, Snowflake, Plant]
 current = 0
 
 HEADING = 0
@@ -167,10 +181,10 @@ $ ->
   $window.resize((e) ->
     surface.canvas.width = window.innerWidth
     surface.canvas.height = window.innerHeight
-    clearInterval(f) for f in fractals
+    fractals = []
   ).trigger('resize')
 
-  $('#canvas').click (e) ->
+  $window.click (e) ->
     fractals.push(new Fractals[current](surface, e.pageX, e.pageY, HEADING, SIZE))
     current = (current + 1) % Fractals.length
 
