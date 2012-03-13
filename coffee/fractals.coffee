@@ -156,11 +156,14 @@ HEADING = 0
 SIZE = 1
 FPS = 0
 speed = if FPS == 0 then 0 else 1000/FPS
+fractals = []
+
+update = ->
+  fractal.step() for fractal in fractals
 
 $ ->
   surface = document.getElementById('canvas').getContext('2d')
   $window = $(window)
-  fractals = []
   $window.resize((e) ->
     surface.canvas.width = window.innerWidth
     surface.canvas.height = window.innerHeight
@@ -168,6 +171,7 @@ $ ->
   ).trigger('resize')
 
   $('#canvas').click (e) ->
-    fractal = new Fractals[current](surface, e.pageX, e.pageY, HEADING, SIZE)
+    fractals.push(new Fractals[current](surface, e.pageX, e.pageY, HEADING, SIZE))
     current = (current + 1) % Fractals.length
-    fractals.push(setInterval((() -> fractal.step()), speed))
+
+  main = setInterval(update, speed)
