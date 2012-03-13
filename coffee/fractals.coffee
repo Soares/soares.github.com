@@ -110,6 +110,7 @@ class Dragon extends Fractal
     'X': 'X+YF'
     'Y': 'FX-Y'
   angle: 1/4
+  scale: 2
   hue: 1/7
   spectrum: [-1/24, 1/6]
   depth: 16
@@ -132,6 +133,7 @@ class Plant extends Fractal
     'F': 'FF'
   theta: 1/4
   angle: -25/360
+  scale: 3
   depth: 8
   hue: .15
   spectrum: [.15, .4]
@@ -171,21 +173,47 @@ SIZE = 1
 FPS = 0
 speed = if FPS == 0 then 0 else 1000/FPS
 fractals = []
+main = undefined
+$controls = undefined
 
 update = ->
   fractal.step() for fractal in fractals
 
+go = ->
+  main = main or setInterval(update, speed)
+
+stop = ->
+  fractals = []
+  $controls?.removeClass('going').removeClass('paused')
+  main = clearInterval(main)
+
 $ ->
   surface = document.getElementById('canvas').getContext('2d')
+  $controls = $('#controls')
+  $('.control', $controls).click (e) ->
+    e.stopPropagation()
+    if $controls.is('.going')
+      $controls.removeClass('going').addClass('paused')
+      main = clearInterval(main)
+    else
+      $controls.removeClass('paused').addClass('going')
+      go()
+  $('.clear', $controls).click (e) ->
+    surface.clearRect(0, 0, surface.canvas.width, surface.canvas.height)
+    e.stopPropagation()
+    stop()
   $window = $(window)
   $window.resize((e) ->
     surface.canvas.width = window.innerWidth
     surface.canvas.height = window.innerHeight
-    fractals = []
+    stop()
   ).trigger('resize')
 
   $window.click (e) ->
-    fractals.push(new Fractals[current](surface, e.pageX, e.pageY, HEADING, SIZE))
+    $controls.addClass('going')
+    [x, y] = [e.pageX, e.pageY]
+    x -= document.body.scrollLeft
+    y -= document.body.scrollTop
+    fractals.push(new Fractals[current](surface, x, y, HEADING, SIZE))
     current = (current + 1) % Fractals.length
-
-  main = setInterval(update, speed)
+    go()
