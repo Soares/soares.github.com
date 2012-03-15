@@ -2,6 +2,7 @@
 @import "media-queries.less";
 @import "helpers.less";
 @import "print.less";
+@import "btn.less";
 @import "bootstrap.less";
 
 body {
@@ -54,11 +55,7 @@ body {
   position: relative;
   z-index: 1;
 
-  img {
-    float: right;
-    width: 64px;
-    height: 64px;
-  }
+  img { float: right; }
 
   h1 {
     margin: 0;
@@ -78,12 +75,8 @@ body {
         display: inline-block;
         margin-right: 1em;
       }
-      a {
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
     }
   }
   blockquote {
@@ -114,19 +107,30 @@ body {
 }
 
 #more {
-  display: none;
   padding-top: 3%;
   padding-bottom: 3%;
   overflow: auto;
   text-align: center;
+  display: none;
   font-size: 1.2;
-  p { text-shadow: 0 1px 1px #888; }
+  p { text-shadow: 0 1px 1px #888; clear: right; }
   table {
     margin: 2em auto;
+    margin-bottom: 0;
+    empty-cells: show;
   }
   #to-card {
-    margin-top: 2em;
+    margin-top: 1.5em;
     float: left;
+  }
+  #iterate {
+    float: right;
+    margin-bottom: 1em;
+    i {
+      width: 15px;
+      display: inline-block;
+      margin-top: 2px;
+    }
   }
 }
 
@@ -137,9 +141,7 @@ button i {
 /* Media queries */
 
 @media only screen and (min-width: 768px) {
-  #card, #more {
-    float: left;
-  }
+  #card, #more { float: left; }
 }
 
 /* Icon extensions */
@@ -154,9 +156,22 @@ button i {
   background-image: url("../img/triforce.png") !important;
   background-position: 0 0;
 }
-.icon-triforce.icon-white {
+.icon-triforce.icon-white:not(.active) {
   background-image: url("../img/triforce-white.png") !important;
 }
+.custom {
+  width: 24px;
+  height: 24px;
+  background-position: 0 0;
+}
+.icon-file {
+  background-image: url("../img/file.png") !important;
+  width: 18px;
+}
+.icon-twitter { background-image: url("../img/twitter.png") !important; }
+.icon-tumblr { background-image: url("../img/tumblr.png") !important; }
+.icon-linkedin { background-image: url("../img/linkedin.png") !important; }
+.icon-archives { background-image: url("../img/archives.png") !important; }
 
 @fire: #fdd017;
 @fire2: #fa0;
@@ -168,37 +183,55 @@ button i {
 @tri2: #c2f;
 
 /* Theming */
+body.tri { a:not(:visited) { color: #b4b; } }
+body.snow { a:visited { color: #008; } }
+body.fire { a { color: #d64; } a:visited { color: #800; } }
+body.earth { a { color: #6d4; } a:visited { color: #080; } }
+
+body.hacker {
+  background: black;
+  #card {
+    background: black;
+    text: white;
+    font-family: "Courier New", monospace;
+    a:visited {
+      color: #080;
+    }
+    a {
+      color: #0f0;
+    }
+    blockquote {
+      border-color: #333;
+    }
+  }
+}
+
+body, blockquote, a {
+  -webkit-transition: all .8s;
+  -moz-transition: all .8s;
+  -ms-transition: all .8s;
+  -o-transition: all .8s;
+  transition: all .8s;
+}
 body {
-  .quote.only {
-    &.fire, &.earth, &.snow, &.tri {
-      height: 0;
-      .opacity(0);
-    }
-  }
-  .said.only {
-    &.fire, &.earth, &.snow, &.tri {
-      width: 0;
-      height: 0;
-      .opacity(0);
-    }
-  }
+  img.only { width: 0; height: 0; .opacity(0); }
+  .quote.only { height: 0; .opacity(0); }
+  .said.only { width: 0; height: 0; .opacity(0); }
+
+  &.fire img.only.fire,
+  &.earth img.only.earth,
+  &.snow img.only.snow,
+  &.tri img.only.tri { width: 64px; height: 64px; .opacity(1); }
 
   &.fire .quote.only.fire,
   &.earth .quote.only.earth,
   &.snow .quote.only.snow,
-  &.tri .quote.only.tri {
-    height: 100%;
-    .opacity(1);
-  }
+  &.tri .quote.only.tri { height: 100%; .opacity(1); }
 
   &.fire .said.only.fire,
   &.earth .said.only.earth,
   &.snow .said.only.snow,
-  &.tri .said.only.tri {
-    height: 100%;
-    width: 100%;
-    .opacity(1);
-  }
+  &.tri .said.only.tri { height: 100%; width: 100%; .opacity(1); }
 
   /*  rgba(128,255,128,1) */
   &.fire #halo { stroke: @fire }
@@ -221,6 +254,18 @@ blockquote {
     overflow: hidden;
     display: block;
   }
+}
+img {
+  -webkit-transition: height .9s;
+  -webkit-transition: opacity .9s;
+  -moz-transition: height .9s;
+  -moz-transition: opacity .9s;
+  -ms-transition: height .9s;
+  -ms-transition: opacity .9s;
+  -o-transition: height .9s;
+  -o-transition: opacity .9s;
+  transition: height .9s;
+  transition: opacity .9s;
 }
 #attribution {
   overflow: hidden;

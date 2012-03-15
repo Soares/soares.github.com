@@ -79,21 +79,19 @@ class Fractal extends LSystem
   constructor: (@pen, x, y, heading, size) ->
     @_color = Color.hsl(@hue, @sat, @lum).toString()
     [min, max] = @spectrum
-    space = if max == min then 1 else max - min
+    space = max - min
     @_step = space / @depth
-    @_direction = if max == min then 0 else 1
     super
 
   next: =>
-    hue = @hue + (@_step * @_direction)
-    if @_direction == 0
-      hue = hue % 1
-    else if @_direction > 0 and hue >= @spectrum[1]
-      hue = @spectrum[1]
-      @_direction = -1
-    else if @_direction < 0 and hue <= @spectrum[0]
-      hue = @spectrum[0]
-      @_direction = 1
+    hue = @hue + @_step
+    big = Math.max(@spectrum[0], @spectrum[1])
+    lil = Math.min(@spectrum[0], @spectrum[1])
+    if @spectrum[0] != 0 or @spectrum[1] != 1
+      if hue > big
+        hue = lil
+      else if hue < lil
+        hue = big
     @hue = hue
 
   reset: =>
@@ -112,8 +110,8 @@ class Dragon extends Fractal
     'Y': 'FX-Y'
   angle: 1/4
   scale: 2
-  hue: 1/8
-  spectrum: [-1/24, 1/6]
+  hue: .15
+  spectrum: [.15, 0]
   depth: 12
   reset: =>
     @batching = @progress
@@ -174,11 +172,11 @@ class Tree extends Fractal
   rules:
     'X': 'F[-FFX]+FX'
   angle: 1/16
-  depth: 8
+  depth: 1
   scale: 6
-  hue: .10
+  hue: .31
   theta: -1/4
-  spectrum: [.15, .4]
+  spectrum: [.31,.312]
   reset: (turtle) =>
     turtle.jump(@x,@y).look(@theta)
     super
