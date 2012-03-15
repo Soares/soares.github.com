@@ -14,30 +14,17 @@ body {
   line-height: 1.4em;
 }
 
-#canvas, #text {
+#canvas, #svg {
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 0;
+  cursor: pointer;
 }
 
-#field {
-  width: auto;
-  height: auto;
-  color: blue;
-  white-space: pre;
-  cursor: default;
-  display: inline-block;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 12px;
-}
+#dot, #halo { opacity: .7; visibility: hidden; }
 
 #overlay {
   margin-top: 2em;
@@ -63,7 +50,7 @@ body {
 }
 
 #card {
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.9);
   padding: 5% 3%;
   max-width: 320px;
   margin: 0 auto;
@@ -103,14 +90,18 @@ body {
     }
   }
 
-  span.attribution {
+  blockquote {
+    position: relative;
+  }
+  blockquote span {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  span#attribution {
     margin-top: .2em;
     float: right;
     .opacity(.5);
-  }
-
-  blockquote.active {
-    display: block;
   }
 
   #controls {
@@ -124,6 +115,12 @@ body {
     &.going .control .icon-play { display: none; }
     &.paused .control .icon-play { display: inline block; }
     &.paused .control .icon-pause { display: none; }
+  }
+
+  #fractals {
+    float: left;
+    clear: both;
+    margin-top: 1em;
   }
 }
 
@@ -140,10 +137,59 @@ button i {
 }
 
 /* Icon extensions */
-.icon-so8res {
-  background-image: url("../img/so8res/dark.png") !important;
+.icon-snowflake {
+  background-image: url("../img/snowflake.png") !important;
   background-position: 0 0;
 }
-.icon-so8res.icon-white {
-  background-image: url("../img/so8res/white.png") !important;
+.icon-snowflake.icon-white {
+  background-image: url("../img/snowflake-white.png") !important;
+}
+.icon-triforce {
+  background-image: url("../img/triforce.png") !important;
+  background-position: 0 0;
+}
+.icon-triforce.icon-white {
+  background-image: url("../img/triforce-white.png") !important;
+}
+
+@fire: #fdd017;
+@fire2: #fa0;
+@earth: #a5dd35;
+@earth2: #a55d35;
+@snow: #8ee;
+@snow2: #6cc;
+@tri: #35f;
+@tri2: #c2f;
+
+/* Theming */
+body {
+  .only {
+    &.fire, &.earth, &.snow, &.tri {
+      display: none;
+    }
+  }
+
+  &.fire .only.fire,
+  &.earth .only.earth,
+  &.snow .only.snow,
+  &.tri .only.tri {
+    display: inline;
+  }
+  /*  rgba(128,255,128,1) */
+  &.fire #halo { stroke: @fire }
+  &.earth #halo { stroke: @earth }
+  &.snow #halo { stroke: @snow }
+  &.tri #halo { stroke: @tri }
+  &.fire #dot { fill: @fire2 }
+  &.earth #dot { fill: @earth2 }
+  &.snow #dot { fill: @snow2 }
+  &.tri #dot { fill: @tri2 }
+}
+
+/* Transitions */
+blockquote span {
+  transition: display 0.8s ease-in;
+  -moz-transition: display 0.8s ease-in;
+  -webkit-transition: display 0.8s ease-in;
+  -o-transition: display 0.8s ease-in;
 }
