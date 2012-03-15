@@ -114,19 +114,30 @@ body {
 }
 
 #more {
-  display: none;
   padding-top: 3%;
   padding-bottom: 3%;
   overflow: auto;
   text-align: center;
+  display: none;
   font-size: 1.2;
-  p { text-shadow: 0 1px 1px #888; }
+  p { text-shadow: 0 1px 1px #888; clear: right; }
   table {
     margin: 2em auto;
+    margin-bottom: 0;
+    empty-cells: show;
   }
   #to-card {
-    margin-top: 2em;
+    margin-top: 1.5em;
     float: left;
+  }
+  #iterate {
+    float: right;
+    margin-bottom: 1em;
+    i {
+      width: 15px;
+      display: inline-block;
+      margin-top: 2px;
+    }
   }
 }
 
@@ -157,6 +168,19 @@ button i {
 .icon-triforce.icon-white {
   background-image: url("../img/triforce-white.png") !important;
 }
+.custom {
+  width: 24px;
+  height: 24px;
+  background-position: 0 0;
+}
+.icon-file {
+  background-image: url("../img/file.png") !important;
+  width: 18px;
+}
+.icon-twitter { background-image: url("../img/twitter.png") !important; }
+.icon-tumblr { background-image: url("../img/tumblr.png") !important; }
+.icon-linkedin { background-image: url("../img/linkedin.png") !important; }
+.icon-archives { background-image: url("../img/archives.png") !important; }
 
 @fire: #fdd017;
 @fire2: #fa0;
