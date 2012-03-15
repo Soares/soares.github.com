@@ -89,18 +89,10 @@ body {
       }
     }
   }
-
   blockquote {
-    position: relative;
+    margin-bottom: .2em;
   }
-  blockquote span {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  span#attribution {
-    margin-top: .2em;
-    float: right;
+  #attribution {
     .opacity(.5);
   }
 
@@ -163,18 +155,37 @@ button i {
 
 /* Theming */
 body {
-  .only {
+  .quote.only {
     &.fire, &.earth, &.snow, &.tri {
-      display: none;
+      height: 0;
+      opacity: 0;
+    }
+  }
+  .said.only {
+    &.fire, &.earth, &.snow, &.tri {
+      width: 0;
+      height: 0;
+      opacity: 0;
     }
   }
 
-  &.fire .only.fire,
-  &.earth .only.earth,
-  &.snow .only.snow,
-  &.tri .only.tri {
-    display: inline;
+  &.fire .quote.only.fire,
+  &.earth .quote.only.earth,
+  &.snow .quote.only.snow,
+  &.tri .quote.only.tri {
+    height: 100%;
+    opacity: 1;
   }
+
+  &.fire .said.only.fire,
+  &.earth .said.only.earth,
+  &.snow .said.only.snow,
+  &.tri .said.only.tri {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+  }
+
   /*  rgba(128,255,128,1) */
   &.fire #halo { stroke: @fire }
   &.earth #halo { stroke: @earth }
@@ -187,9 +198,23 @@ body {
 }
 
 /* Transitions */
-blockquote span {
-  transition: display 0.8s ease-in;
-  -moz-transition: display 0.8s ease-in;
-  -webkit-transition: display 0.8s ease-in;
-  -o-transition: display 0.8s ease-in;
+
+blockquote {
+  overflow: hidden;
+  .quote {
+    -webkit-transition: height .9s;
+    -webkit-transition: opacity .9s;
+    overflow: hidden;
+    display: block;
+  }
+}
+#attribution {
+  overflow: hidden;
+  .said {
+    text-align: right;
+    -webkit-transition: height .9s;
+    -webkit-transition: opacity .9s;
+    overflow: hidden;
+    display: block;
+  }
 }
