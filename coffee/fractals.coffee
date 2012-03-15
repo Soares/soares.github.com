@@ -219,8 +219,9 @@ $ ->
   $('button', $fractals).click ->
     $this = $(this)
     $this.button('toggle');
-    Current = Fractals[$this.data('fractal')]
-    $body.removeClass().addClass($this.data('fractal'))
+    frac = $this.data('fractal')
+    Current = Fractals[frac]
+    $body.removeClass().addClass(frac)
   $('.control', $controls).click (e) ->
     e.stopPropagation()
     if $controls.is('.going')

@@ -4,10 +4,6 @@
 @import "print.less";
 @import "bootstrap.less";
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
   font-size: 1em;
@@ -24,7 +20,7 @@ body {
   cursor: pointer;
 }
 
-#dot, #halo { opacity: .7; visibility: hidden; }
+#dot, #halo { .opacity(.7); visibility: hidden; }
 
 #overlay {
   margin-top: 2em;
@@ -49,9 +45,10 @@ body {
   display: none;
 }
 
-#card {
+#card, #more {
+  box-sizing: border-box;
   background: rgba(255,255,255,.9);
-  padding: 5% 3%;
+  padding: 3% 3%;
   max-width: 320px;
   margin: 0 auto;
   position: relative;
@@ -89,18 +86,10 @@ body {
       }
     }
   }
-
   blockquote {
-    position: relative;
+    margin-bottom: .2em;
   }
-  blockquote span {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  span#attribution {
-    margin-top: .2em;
-    float: right;
+  #attribution {
     .opacity(.5);
   }
 
@@ -124,6 +113,23 @@ body {
   }
 }
 
+#more {
+  display: none;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  overflow: auto;
+  text-align: center;
+  font-size: 1.2;
+  p { text-shadow: 0 1px 1px #888; }
+  table {
+    margin: 2em auto;
+  }
+  #to-card {
+    margin-top: 2em;
+    float: left;
+  }
+}
+
 button i {
   vertical-align: middle;
 }
@@ -131,7 +137,7 @@ button i {
 /* Media queries */
 
 @media only screen and (min-width: 768px) {
-  #card {
+  #card, #more {
     float: left;
   }
 }
@@ -163,18 +169,37 @@ button i {
 
 /* Theming */
 body {
-  .only {
+  .quote.only {
     &.fire, &.earth, &.snow, &.tri {
-      display: none;
+      height: 0;
+      .opacity(0);
+    }
+  }
+  .said.only {
+    &.fire, &.earth, &.snow, &.tri {
+      width: 0;
+      height: 0;
+      .opacity(0);
     }
   }
 
-  &.fire .only.fire,
-  &.earth .only.earth,
-  &.snow .only.snow,
-  &.tri .only.tri {
-    display: inline;
+  &.fire .quote.only.fire,
+  &.earth .quote.only.earth,
+  &.snow .quote.only.snow,
+  &.tri .quote.only.tri {
+    height: 100%;
+    .opacity(1);
   }
+
+  &.fire .said.only.fire,
+  &.earth .said.only.earth,
+  &.snow .said.only.snow,
+  &.tri .said.only.tri {
+    height: 100%;
+    width: 100%;
+    .opacity(1);
+  }
+
   /*  rgba(128,255,128,1) */
   &.fire #halo { stroke: @fire }
   &.earth #halo { stroke: @earth }
@@ -187,9 +212,31 @@ body {
 }
 
 /* Transitions */
-blockquote span {
-  transition: display 0.8s ease-in;
-  -moz-transition: display 0.8s ease-in;
-  -webkit-transition: display 0.8s ease-in;
-  -o-transition: display 0.8s ease-in;
+
+blockquote {
+  overflow: hidden;
+  .quote {
+    -webkit-transition: height .9s;
+    -webkit-transition: opacity .9s;
+    overflow: hidden;
+    display: block;
+  }
+}
+#attribution {
+  overflow: hidden;
+  .said {
+    text-align: right;
+    -webkit-transition: height .9s;
+    -webkit-transition: opacity .9s;
+    -moz-transition: height .9s;
+    -moz-transition: opacity .9s;
+    -ms-transition: height .9s;
+    -ms-transition: opacity .9s;
+    -o-transition: height .9s;
+    -o-transition: opacity .9s;
+    transition: height .9s;
+    transition: opacity .9s;
+    overflow: hidden;
+    display: block;
+  }
 }

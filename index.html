@@ -24,7 +24,7 @@
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
 <body class="tri">
-  <!--Version: 0.7 -->
+  <!--Version: 0.8 -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <canvas id="canvas"></canvas>
   <svg xmlns="http://www.w3.org/2000/svg" id="svg">
@@ -41,34 +41,36 @@
           <li><span class="arrow">→</span><a href="http://github.com/soares">Coder</a></li>
           <li><span class="arrow">→</span><a href="#">Author</a><!--http://lightandallhercolors.com--></li>
           <li><span class="arrow">→</span><a href="#">Simplifientist</a><!--http://simplifience.com--></li>
-          <li><span class="arrow">→</span><a href="resume.pdf">More</a></li>
+          <li><span class="arrow">→</span><a id="to-more" href="resume.pdf">More</a></li>
         </ul>
         <blockquote>
-          <span class="only tri">
+          <span class="only tri quote">
             The only way of discovering the limits of the possible is to
             venture a little way past them into the impossible.
+            <br>&nbsp;
           </span>
-          <span class="only earth">
+          <span class="only earth quote">
             The lurking suspicion that something could be simplified is the
             world's richest source of rewarding challeges.
+            <br>&nbsp;
           </span>
-          <span class="only snow">
+          <span class="only snow quote">
             The reasonable man adapts himself to the world; the unreasonable
             one persists in trying to adapt the world to himself. Therefore
             all progress depends on the unreasonable man.
           </span>
-          <span class="only fire">
+          <span class="only fire quote">
             Computing never grows boring. If you find yourself plagued by
             rote, isolate and automate. Repeat as necessary
             until you're solving an interesting problem.
           </span>
-          <br>
-          <span id="attribution">
-            <span class="only tri">Arthur C. Clarke</span>
-            <span class="only earth">Edsger W. Dijkstra</span>
-            <span class="only snow">George Bernarnd Shaw</span>
-          </span>
         </blockquote>
+        <div id="attribution">
+          <span class="only tri said">Arthur C. Clarke</span>
+          <span class="only earth said">Edsger W. Dijkstra</span>
+          <span class="only snow said">George Bernarnd Shaw</span>
+          <span class="only fire said"><br></span>
+        </div>
         <div id="fractals" class="btn-group" data-toggle="buttons-radio">
           <button class="active btn" data-fractal="tri"><i class="icon-triforce"></i></button>
           <button class="btn" data-fractal="earth"><i class="icon-leaf"></i></button>
@@ -79,6 +81,28 @@
           <button class="clear btn"><i class="icon-trash"></i></button>
           <button class="control btn"><i class="icon-play"></i><i class="icon-pause"></i></button>
         </div>
+      </div>
+      <div id="more">
+        <p>Boredom is my nemesis. Pursuit of knowledge and beauty are my armaments.</p>
+        <table id="links">
+          <tr>
+            <td></td>
+            <td><a class="btn" title="Résumé" href="resume.pdf"><i class="icon-file"></i></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a class="btn" title="Follow me" href="http://twitter.com/so8res"><i class="icon-twitter"></i></a></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a class="btn" title="The Adventure Logs" href="http://so8res.tumblr.com"><i class="icon-tumblr"></i></a></td>
+            <td><a class="btn" title="Business" href="resume.pdf"><i class="icon-linkedin"></i></a></td>
+            <td><a class="btn" title="archives" href="http://archives.so8res.com"><i class="icon-folder-open"></i></a></td>
+          </tr>
+        </table>
+        <p>I have a plan to save the world.</p>
+        <a id="to-card" href="/">less</a>
       </div>
     </div>
   </div>
@@ -93,6 +117,7 @@
   <!--TODO: Load other scripts here-->
   <!--TODO: Compile, combine, & minify (then stop using coffeescript)-->
   <script src="js/libs/coffee-script.js"></script>
+  <script type="text/coffeescript" src="coffee/more.coffee"></script>
   <script type="text/coffeescript" src="coffee/vector.coffee"></script>
   <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
   <script type="text/coffeescript" src="coffee/dot.coffee"></script>
