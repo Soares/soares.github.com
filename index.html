@@ -41,7 +41,7 @@
           <li><span class="arrow">→</span><a href="http://github.com/soares">Coder</a></li>
           <li><span class="arrow">→</span><a href="#">Author</a><!--http://lightandallhercolors.com--></li>
           <li><span class="arrow">→</span><a href="#">Simplifientist</a><!--http://simplifience.com--></li>
-          <li><span class="arrow">→</span><a href="resume.pdf">More</a></li>
+          <li><span class="arrow">→</span><a id="to-more" href="resume.pdf">More</a></li>
         </ul>
         <blockquote>
           <span class="only tri quote">
@@ -82,6 +82,28 @@
           <button class="control btn"><i class="icon-play"></i><i class="icon-pause"></i></button>
         </div>
       </div>
+      <div id="more">
+        <p>Boredom is my nemesis. Pursuit of knowledge and beauty are my armaments.</p>
+        <table id="links">
+          <tr>
+            <td></td>
+            <td><a class="btn" title="Résumé" href="resume.pdf"><i class="icon-file"></i></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a class="btn" title="Follow me" href="http://twitter.com/so8res"><i class="icon-twitter"></i></a></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a class="btn" title="The Adventure Logs" href="http://so8res.tumblr.com"><i class="icon-tumblr"></i></a></td>
+            <td><a class="btn" title="Business" href="resume.pdf"><i class="icon-linkedin"></i></a></td>
+            <td><a class="btn" title="archives" href="http://archives.so8res.com"><i class="icon-folder-open"></i></a></td>
+          </tr>
+        </table>
+        <p>I have a plan to save the world.</p>
+        <a id="to-card" href="/">less</a>
+      </div>
     </div>
   </div>
 
@@ -95,6 +117,7 @@
   <!--TODO: Load other scripts here-->
   <!--TODO: Compile, combine, & minify (then stop using coffeescript)-->
   <script src="js/libs/coffee-script.js"></script>
+  <script type="text/coffeescript" src="coffee/more.coffee"></script>
   <script type="text/coffeescript" src="coffee/vector.coffee"></script>
   <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
   <script type="text/coffeescript" src="coffee/dot.coffee"></script>

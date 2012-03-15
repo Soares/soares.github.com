@@ -4,10 +4,6 @@
 @import "print.less";
 @import "bootstrap.less";
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
   font-size: 1em;
@@ -24,7 +20,7 @@ body {
   cursor: pointer;
 }
 
-#dot, #halo { opacity: .7; visibility: hidden; }
+#dot, #halo { .opacity(.7); visibility: hidden; }
 
 #overlay {
   margin-top: 2em;
@@ -49,7 +45,8 @@ body {
   display: none;
 }
 
-#card {
+#card, #more {
+  box-sizing: border-box;
   background: rgba(255,255,255,.9);
   padding: 3% 3%;
   max-width: 320px;
@@ -116,6 +113,23 @@ body {
   }
 }
 
+#more {
+  display: none;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  overflow: auto;
+  text-align: center;
+  font-size: 1.2;
+  p { text-shadow: 0 1px 1px #888; }
+  table {
+    margin: 2em auto;
+  }
+  #to-card {
+    margin-top: 2em;
+    float: left;
+  }
+}
+
 button i {
   vertical-align: middle;
 }
@@ -123,7 +137,7 @@ button i {
 /* Media queries */
 
 @media only screen and (min-width: 768px) {
-  #card {
+  #card, #more {
     float: left;
   }
 }
@@ -158,14 +172,14 @@ body {
   .quote.only {
     &.fire, &.earth, &.snow, &.tri {
       height: 0;
-      opacity: 0;
+      .opacity(0);
     }
   }
   .said.only {
     &.fire, &.earth, &.snow, &.tri {
       width: 0;
       height: 0;
-      opacity: 0;
+      .opacity(0);
     }
   }
 
@@ -174,7 +188,7 @@ body {
   &.snow .quote.only.snow,
   &.tri .quote.only.tri {
     height: 100%;
-    opacity: 1;
+    .opacity(1);
   }
 
   &.fire .said.only.fire,
@@ -183,7 +197,7 @@ body {
   &.tri .said.only.tri {
     height: 100%;
     width: 100%;
-    opacity: 1;
+    .opacity(1);
   }
 
   /*  rgba(128,255,128,1) */
@@ -214,6 +228,14 @@ blockquote {
     text-align: right;
     -webkit-transition: height .9s;
     -webkit-transition: opacity .9s;
+    -moz-transition: height .9s;
+    -moz-transition: opacity .9s;
+    -ms-transition: height .9s;
+    -ms-transition: opacity .9s;
+    -o-transition: height .9s;
+    -o-transition: opacity .9s;
+    transition: height .9s;
+    transition: opacity .9s;
     overflow: hidden;
     display: block;
   }
