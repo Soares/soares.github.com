@@ -18,6 +18,10 @@ class Turtle
     @pen.moveTo(@x, @y)
     return this
   jump: (@x, @y) => this
+  move: (x, y) =>
+    @x += x
+    @y += y
+    this
   look: (@theta) => this
   forward: (size=1) =>
     @pen.beginPath()
@@ -60,12 +64,10 @@ class LSystem
   step: (skip) =>
     symbol = @axiom.shift()
     @axiom = @axiom.concat((@rules?[symbol] ? symbol).split(''))
-    unless skip
-      @actions[symbol]?()
-      @progress++
-      return if symbol == 'F' then this else @step()
-    else
-      return this
+    if skip then return this
+    @actions[symbol]?()
+    @progress++
+    return if symbol == 'F' then this else @step()
 
 class Fractal extends LSystem
   hue: 0
@@ -110,11 +112,19 @@ class Dragon extends Fractal
     'Y': 'FX-Y'
   angle: 1/4
   scale: 2
-  hue: 1/7
+  hue: 1/8
   spectrum: [-1/24, 1/6]
-  depth: 16
+  depth: 12
   reset: =>
-    @step(true) for i in [0...@progress]
+    @batching = @progress
+    super
+
+  step: (skip) =>
+    if not skip and @batching > 0
+      cap = Math.min(100, @batching)
+      @step(true) for i in [0...cap]
+      @batching -= cap
+      return
     super
 
 class Snowflake extends Fractal
@@ -140,37 +150,44 @@ class Plant extends Fractal
     turtle.jump(turtle.x + size * .5 * Math.pow(@progress, .5), @y).look(@angle)
     super
 
+hoff = 0
+toff = 0
 class Serpinsky extends Fractal
+  constructor: ->
+    @hue += hoff
+    hoff += .29
+    @theta *= toff
+    toff = toff + 1 % 6
+    super
   axiom: 'FX'
   rules:
     'X': 'Y-FX-FY'
     'Y': 'X+FY+FX'
   depth: 16
   angle: -1/6
-  hue: 1/3
-  reset: (turtle) =>
-    turtle.turn(@angle)
-    super
+  theta: 1/6
+  hue: -.35
+  # spectrum: [.15, .16]
 
-class Eight extends Fractal
+class Tree extends Fractal
   axiom: 'FX'
   rules:
     'X': 'F[-FFX]+FX'
-  angle: 1/12
+  angle: 1/16
   depth: 8
   scale: 6
-  theta: -1/2
+  hue: .10
+  theta: -1/4
+  spectrum: [.15, .4]
   reset: (turtle) =>
     turtle.jump(@x,@y).look(@theta)
     super
 
 Fractals =
-  dragon: Dragon
-  eight: Eight
-  serpinsky: Serpinsky
-  snowflake: Snowflake
-  plant: Plant
-Current = Dragon
+  fire: Dragon
+  earth: Tree
+  snow: Snowflake
+  tri: Serpinsky
 
 HEADING = 0
 SIZE = 1
@@ -196,9 +213,14 @@ $ ->
   surface = document.getElementById('canvas').getContext('2d')
   $controls = $('#controls')
   $fractals = $('#fractals')
+  $body = $('body')
+  Current = Fractals[$body.attr('class')]
   $('button', $controls.add($fractals)).click (e) -> e.stopPropagation()
   $('button', $fractals).click ->
-    Current = Fractals[$(this).data('fractal')]
+    $this = $(this)
+    $this.button('toggle');
+    Current = Fractals[$this.data('fractal')]
+    $body.removeClass().addClass($this.data('fractal'))
   $('.control', $controls).click (e) ->
     e.stopPropagation()
     if $controls.is('.going')
@@ -226,3 +248,7 @@ $ ->
     y -= document.body.scrollTop
     fractals.push(new Current(surface, x, y, HEADING, SIZE))
     go()
+
+# TODO: Move out of this file
+$ ->
+  $('.btn-group').button()

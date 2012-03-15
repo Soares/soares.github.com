@@ -23,12 +23,13 @@
 
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
-<body class="calm">
+<body class="tri">
   <!--Version: 0.6 -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <canvas id="canvas"></canvas>
   <svg xmlns="http://www.w3.org/2000/svg" id="svg">
-    <circle id="dot" cx="0" cy="0" r="3" fill="blue"/>
+    <circle id="halo" class="ring" cx="0" cy="0" r="6" stroke-width="2px" fill="none"/>
+    <circle id="dot" class="ring" cx="0" cy="0" r="3">
   </svg>
 
   <div id="overlay">
@@ -43,23 +44,36 @@
           <li><span class="arrow">→</span><a href="resume.pdf">More</a></li>
         </ul>
         <blockquote>
-          The only way of discovering the limits of the possible is to
-          venture a little way past them into the impossible.
-          <br><span class="attribution">Arthur C. Clarke</span>
+          <span class="only tri">
+            The only way of discovering the limits of the possible is to
+            venture a little way past them into the impossible.
+          </span>
+          <span class="only earth">
+            The lurking suspicion that something could be simplified is the
+            world's richest source of rewarding challeges.
+          </span>
+          <span class="only snow">
+            The reasonable man adapts himself to the world; the unreasonable
+            one persists in trying to adapt the world to himself. Therefore
+            all progress depends on the unreasonable man.
+          </span>
+          <span class="only fire">
+            Computing never grows boring. If you find yourself plagued by
+            rote, isolate and automate. Repeat as necessary
+            until you're solving an interesting problem.
+          </span>
+          <br>
+          <span id="attribution">
+            <span class="only tri">Arthur C. Clarke</span>
+            <span class="only earth">Edsger W. Dijkstra</span>
+            <span class="only snow">George Bernarnd Shaw</span>
+          </span>
         </blockquote>
-        <div id="styles" class="btn-group" data-toggle="buttons-radio" title="Coming soon!">
-          <button class="btn" data-style="calm" disabled><i class="icon-home"></i></button>
-          <button class="btn" data-style="so8res" disabled><i class="icon-so8res"></i></button>
-          <button class="btn" data-style="core" disabled><i class="icon-chevron-right"></i></button>
-          <button class="btn" data-style="colors" disabled><i class="icon-star"></i></button>
-          <button class="btn" data-style="life" disabled><i class="icon-picture"></i></button>
-        </div>
         <div id="fractals" class="btn-group" data-toggle="buttons-radio">
-          <button class="btn" data-fractal="dragon"><i class="icon-fire"></i></button>
-          <button class="btn" data-fractal="eight"><i class="icon-so8res"></i></button>
-          <button class="btn" data-fractal="snowflake"><i class="icon-snowflake"></i></button>
-          <button class="btn" data-fractal="serpinsky"><i class="icon-triforce"></i></button>
-          <button class="btn" data-fractal="plant"><i class="icon-leaf"></i></button>
+          <button class="active btn" data-fractal="tri"><i class="icon-triforce"></i></button>
+          <button class="btn" data-fractal="earth"><i class="icon-leaf"></i></button>
+          <button class="btn" data-fractal="snow"><i class="icon-snowflake"></i></button>
+          <button class="btn" data-fractal="fire"><i class="icon-fire"></i></button>
         </div>
         <div id="controls" class="btn-group" data-toggle="buttons-radio">
           <button class="clear btn"><i class="icon-trash"></i></button>
@@ -73,6 +87,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
   <script src="js/libs/underscore-1.3.1.min.js"></script>
+  <script src="js/libs/bootstrap-button.js"></script>
   <script src="js/libs/color.min.js"></script>
 
   <!--TODO: Load other scripts here-->
