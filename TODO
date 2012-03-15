@@ -1,16 +1,12 @@
-Fix so8res border
-A dynamic 'more' page
-  Twitter
-  Tumblr
-  LinkedIn
-  Résumé
-  Blurb
-  Archives
-Hide buttons unless javascript
-A real 404 page
-Switch so8res image
+Add a standalone more page
+Test with many resolutions
+Test in other browsers
+Make a real color wheel
+Hide buttons until JS is enabled
+Make a real 404 page
+Add two more pictures of me
 Add print media business card
-so8res.com
+Redirect so8res.com
 Cut out needless Less/Coffee
 Compile Less
 Compile Coffee
