@@ -2,7 +2,8 @@ LESS = tools/lessc
 CSS = tools/cleancss
 COFFEE = tools/coffee -clp
 JS = java -jar tools/closure.jar
-COFFEES = $(addprefix coffee/, $(shell ls coffee))
+# Order matters
+COFFEES = $(addprefix coffee/, $(addsuffix .coffee, ui dot glider more draw fractals main))
 LIBS = $(addprefix js/libs/, $(shell ls js/libs))
 BASE_LESS = $(addprefix less/, $(shell ls less | grep -v -E "main"))
 
@@ -18,7 +19,7 @@ js/lib.min.js: $(LIBS)
 	$(JS) $^ > js/lib.min.js
 
 js/main.min.js: $(COFFEES)
-	$(COFFEE) $^ | $(JS) > js/main.js
+	$(COFFEE) $^ | $(JS) > js/main.min.js
 
 css/more.css: $(BASE_LESS)
 	$(LESS) less/more.less | $(CSS) > css/more.css
@@ -31,5 +32,6 @@ css/main.css: css/more.css less/main.less
 *.less:
 
 clean:
-	rm js/libs/main.min.js -f
+	rm js/main.min.js -f
+	rm js/lib.min.js -f
 	rm css/* -f
