@@ -1,7 +1,4 @@
-/* =============================================================================
-   Non-Semantic Helper Classes
-   ========================================================================== */
-
+/* Non-Semantic Helper Classes */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
 .ir br { display: none; }
 .hidden { display: none !important; visibility: hidden; }
@@ -11,9 +8,18 @@
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+
+/* Semantic Helper Classes */
 .container { width: 940px; margin-left: auto; margin-right: auto; *zoom: 1; }
 .container:before, .container:after { display: table; content: ""; }
 .container:after { clear: both; }
+.wrapper{ width:90%; margin:0 5%; }
+@media only screen and (min-width: 1140px) {
+  .wrapper{
+    width:1026px; /* 1140px - 10% for margins */
+    margin:0 auto;
+  }
+}
 
 /* =============================================================================
    Less Mixins
