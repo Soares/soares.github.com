@@ -11,21 +11,22 @@
   <meta name="author" content="Nathaniel Soares">
   <meta name="viewport" content="width=device-width">
   <link rel="icon" href="favicon.png">
-
-  <link rel="stylesheet/less" href="less/style.less">
+  <!--TODO: Compile -->
+  <link rel="stylesheet/less" href="less/main.less">
   <script src="js/libs/less-1.2.1.min.js"></script>
-  <!-- TODO:
-       Use SimpLESS (Win/Linux/Mac) to compile your .less files to style.css,
-       then and replace the 2 lines above by this one:
-
-  <link rel="stylesheet/less" href="less/style.css">
-   -->
-
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+  <!-- Hey there, and welcome to the source of my website!
+       There's a secret hidden somewhere around here,
+       so keep your eyes peeled. -->
 </head>
 <body class="tri">
-  <!--Version: 0.8.1 -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <!--Version: 0.8.2 -->
+  <!--[if lt IE 7]><p class=chromeframe>
+    Your browser is <em>ancient!</em>
+    <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+    <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+    to experience this site.
+  </p><![endif]-->
   <canvas id="canvas"></canvas>
   <svg xmlns="http://www.w3.org/2000/svg" id="svg">
     <circle id="halo" class="ring" cx="0" cy="0" r="6" stroke-width="2px" fill="none"/>
@@ -34,7 +35,7 @@
 
   <div id="overlay">
     <div id="card-container" class="wrapper clearfix">
-      <div id="card">
+      <div id="card" class="main">
         <img class="only tri earth fire" src="img/me/1.jpg">
         <img class="only snow" src="img/so8res/blue.png">
         <h1>Nate Soares</h1>
@@ -45,66 +46,42 @@
           <li><span class="arrow">→</span><a id="to-more" href="resume.pdf">More</a></li>
         </ul>
         <blockquote>
-          <span class="only tri quote">
+          <span class="only tri">
             The only way of discovering the limits of the possible is to
             venture a little way past them into the impossible.
             <br>&nbsp;
           </span>
-          <span class="only earth quote">
+          <span class="only earth">
             The lurking suspicion that something could be simplified is the
             world's richest source of rewarding challeges.
             <br>&nbsp;
           </span>
-          <span class="only snow quote">
+          <span class="only snow">
             The reasonable man adapts himself to the world; the unreasonable
             one persists in trying to adapt the world to himself. Therefore
             all progress depends on the unreasonable man.
           </span>
-          <span class="only fire quote">
+          <span class="only fire">
             Computing never grows boring. If you find yourself plagued by
             rote, isolate and automate. Repeat as necessary
             until you're solving an interesting problem.
-            <br>&nbsp;
           </span>
+          <small class="only tri">Arthur C. Clarke</small>
+          <small class="only earth">Edsger W. Dijkstra</small>
+          <small class="only snow">George Bernarnd Shaw</small>
+          <small class="placeholder only fire">&nbsp;</small>
         </blockquote>
-        <div id="attribution">
-          <span class="only tri said">Arthur C. Clarke</span>
-          <span class="only earth said">Edsger W. Dijkstra</span>
-          <span class="only snow said">George Bernarnd Shaw</span>
-        </div>
         <div id="fractals" class="btn-group" data-toggle="buttons-radio">
-          <button class="active colored yellow btn" data-fractal="tri"><i class="icon-white icon-triforce"></i></button>
-          <button class="colored green btn" data-fractal="earth"><i class="icon-white icon-leaf"></i></button>
-          <button class="colored blue btn" data-fractal="snow"><i class="icon-white icon-snowflake"></i></button>
-          <button class="colored red btn" data-fractal="fire"><i class="icon-white icon-fire"></i></button>
+          <button class="active colored yellow btn" data-fractal="tri"><i class="white icon-triforce"></i></button>
+          <!-- I wonder if you could change the data attribute for a hidden fractal...-->
+          <button class="colored green btn" data-fractal="earth"><i class="white icon-leaf"></i></button>
+          <button class="colored blue btn" data-fractal="snow"><i class="white icon-snowflake"></i></button>
+          <button class="colored red btn" data-fractal="fire"><i class="white icon-fire"></i></button>
         </div>
         <div id="controls" class="btn-group" data-toggle="buttons-radio">
           <button class="clear vanilla btn"><i class="icon-trash"></i></button>
           <button class="control vanilla btn"><i class="icon-play"></i><i class="icon-pause"></i></button>
         </div>
-      </div>
-      <div id="more">
-        <p>Boredom is my nemesis. Pursuit of knowledge and beauty are my armaments.</p>
-        <table id="glider">
-          <tr>
-            <td></td>
-            <td><a title="Résumé" href="resume.pdf"><i class="custom icon-file"></i></a></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><a title="Follow me" href="http://twitter.com/so8res"><i class="custom icon-twitter"></i></a></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><a title="The Adventure Logs" href="http://so8res.tumblr.com"><i class="custom icon-tumblr"></i></a></td>
-            <td><a title="Network" href="resume.pdf"><i class="custom icon-linkedin"></i></a></td>
-            <td><a title="Archives" href="http://archives.so8res.com"><i class="custom icon-archives"></i></a></td>
-          </tr>
-        </table>
-        <button class="vanilla btn" id="iterate"><i class="icon-random"></i></button>
-        <p>I have a plan to save the world.</p>
-        <a id="to-card" href="/">less</a>
       </div>
     </div>
   </div>
@@ -119,10 +96,13 @@
   <!--TODO: Load other scripts here-->
   <!--TODO: Compile, combine, & minify (then stop using coffeescript)-->
   <script src="js/libs/coffee-script.js"></script>
+  <script type="text/coffeescript" src="coffee/glider.coffee"></script>
   <script type="text/coffeescript" src="coffee/more.coffee"></script>
-  <script type="text/coffeescript" src="coffee/vector.coffee"></script>
-  <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
   <script type="text/coffeescript" src="coffee/dot.coffee"></script>
+  <script type="text/coffeescript" src="coffee/draw.coffee"></script>
+  <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
+  <script type="text/coffeescript" src="coffee/main.coffee"></script>
+  <script type="text/coffeescript" src="coffee/ui.coffee"></script>
 
   <!--TODO: Set this up
   <script src="js/script.js"></script>

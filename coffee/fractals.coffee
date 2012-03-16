@@ -1,49 +1,14 @@
-TAU = Math.PI * 2
-
-class Turtle
-  constructor: (@pen, @x, @y, @theta) -> @counter = 0
-  save: => {@x, @y, @theta}
-  restore: (state) =>
-    this[attr] = val for attr, val of state
-    return this
-  turn: (angle) =>
-    @theta = (@theta + angle) % 1
-    return this
-  step: (size=1) =>
-    @x += size * Math.cos(@theta * TAU)
-    @y += size * Math.sin(@theta * TAU)
-    return this
-  go: (size=1) =>
-    @step(size)
-    @pen.moveTo(@x, @y)
-    return this
-  jump: (@x, @y) => this
-  move: (x, y) =>
-    @x += x
-    @y += y
-    this
-  look: (@theta) => this
-  forward: (size=1) =>
-    @pen.beginPath()
-    @pen.moveTo(@x, @y)
-    @step(size)
-    @pen.lineTo(@x, @y)
-    @pen.closePath()
-    @pen.stroke()
-    return this
-
-class LSystem
+class Fractal
   axiom: ''
   rules: {}
-  theta: 0
-  scale: 1
   angle: 1/4
   position: 0
 
   constructor: (@pen, @x, @y, heading, size) ->
-    size *= @scale
-    turtle = new Turtle(pen, @x, @y, heading + @theta, size)
+    turtle = new Turtle(pen, @x, @y, heading, size)
     @states = []
+    @colors = @colors.make()
+    @color = @colors.value()
     @progress = 0
     @axiom = (@axiom+'0').split('')
     @actions =
@@ -53,15 +18,16 @@ class LSystem
       '-': => turtle.turn(-@angle)
       '[': => @states.push(turtle.save())
       ']': => turtle.restore(@states.pop())
-      '0': => @iterate(turtle, size)
+      '0': => @iterate(turtle, size, heading)
 
-  iterate: (turtle, size) =>
-    reset = @reset ? => turtle.jump(@x, @y).look(@theta)
-    reset(turtle, size)
+  iterate: (turtle, size, heading) =>
+    @color = @colors.step().value()
+    @reset?(turtle, size, heading)
     @progress--
     return this
 
   step: (skip) =>
+    @pen.strokeStyle = @color
     symbol = @axiom.shift()
     @axiom = @axiom.concat((@rules?[symbol] ? symbol).split(''))
     if skip then return this
@@ -69,53 +35,20 @@ class LSystem
     @progress++
     return if symbol == 'F' then this else @step()
 
-class Fractal extends LSystem
-  hue: 0
-  sat: 1
-  lum: 1/2
-  spectrum: [0, 1]
-  depth: 32
-
-  constructor: (@pen, x, y, heading, size) ->
-    @_color = Color.hsl(@hue, @sat, @lum).toString()
-    [min, max] = @spectrum
-    space = max - min
-    @_step = space / @depth
-    super
-
-  next: =>
-    hue = @hue + @_step
-    big = Math.max(@spectrum[0], @spectrum[1])
-    lil = Math.min(@spectrum[0], @spectrum[1])
-    if @spectrum[0] != 0 or @spectrum[1] != 1
-      if hue > big
-        hue = lil
-      else if hue < lil
-        hue = big
-    @hue = hue
-
-  reset: =>
-    @next()
-    @_color = Color.hsl(@hue, @sat, @lum).toString()
-    return this
-
-  step: (s=1, l=.5) =>
-    @pen.strokeStyle = @_color
-    super
-
 class Dragon extends Fractal
   axiom: 'FX'
   rules:
     'X': 'X+YF'
     'Y': 'FX-Y'
   angle: 1/4
-  scale: 2
-  hue: .15
-  spectrum: [.15, 0]
-  depth: 12
+  colors: new ColorWheel(new Oscilator(.25, .075, .5, .075))
+
+  constructor: (pen, x, y, heading, size) ->
+    @batching = 0
+    super(pen, x, y, heading, size * 3)
+
   reset: =>
     @batching = @progress
-    super
 
   step: (skip) =>
     if not skip and @batching > 0
@@ -130,124 +63,59 @@ class Snowflake extends Fractal
   rules:
     'F': 'F-F++F-F'
   angle: 1/6
-  hue: .5
-  spectrum: [.47, .69]
+  colors: new ColorWheel(
+    new Oscilator(.125, .08, 1, .54),
+    1,
+    new Oscilator(.25, .125, .5, .625))
 
 class Plant extends Fractal
   axiom: 'FX'
   rules:
     'X': 'F-[[X]+X]+F[+FX]-X'
     'F': 'FF'
-  theta: 1/4
   angle: -25/360
-  scale: 3
-  depth: 8
-  hue: .15
-  spectrum: [.15, .4]
+  colors: new ColorWheel(new Oscilator(0, .105, 1, .275))
+
+  constructor: (pen, x, y, heading, size) ->
+    super(pen, x, y, heading + 1/4, size * 3)
+
   reset: (turtle, size) =>
     turtle.jump(turtle.x + size * .5 * Math.pow(@progress, .5), @y).look(@angle)
     super
 
-hoff = 0
-toff = 0
+thits = 0
 class Serpinsky extends Fractal
-  constructor: ->
-    @hue += hoff
-    hoff += .29
-    @theta *= toff
-    toff = toff + 1 % 6
-    super
   axiom: 'FX'
   rules:
     'X': 'Y-FX-FY'
     'Y': 'X+FY+FX'
-  depth: 16
   angle: -1/6
-  theta: 1/6
-  hue: -.35
-  # spectrum: [.15, .16]
+
+  reset: =>
+
+  constructor: (pen, x, y, heading, size) ->
+    theta = (thits % 6) / 6
+    hue = (thits * .29) % 1
+    @colors = new ColorWheel(new Oscilator(hue, .5, .252, .76))
+    super(pen, x, y, heading + theta, size)
+    thits++
 
 class Tree extends Fractal
   axiom: 'FX'
   rules:
     'X': 'F[-FFX]+FX'
   angle: 1/16
-  depth: 1
-  scale: 6
-  hue: .31
-  theta: -1/4
-  spectrum: [.31,.312]
-  reset: (turtle) =>
-    turtle.jump(@x,@y).look(@theta)
-    super
+  colors: new ColorWheel(new Oscilator(0, .105, .8, .265))
 
-Fractals =
+  constructor: (pen, x, y, heading, size) ->
+    super(pen, x, y, heading - 1/4, size * 6)
+
+  reset: (turtle, size, heading) =>
+    turtle.jump(@x, @y).look(heading)
+
+@Fractals =
   fire: Dragon
   earth: Tree
   snow: Snowflake
   tri: Serpinsky
-
-HEADING = 0
-SIZE = 1
-FPS = 0
-speed = if FPS == 0 then 0 else 1000/FPS
-fractals = []
-main = undefined
-$controls = undefined
-pos = undefined
-
-update = ->
-  fractal.step() for fractal in fractals
-
-go = ->
-  main = main or setInterval(update, speed)
-
-stop = ->
-  fractals = []
-  $controls?.removeClass('going').removeClass('paused')
-  main = clearInterval(main)
-
-$ ->
-  surface = document.getElementById('canvas').getContext('2d')
-  $controls = $('#controls')
-  $fractals = $('#fractals')
-  $body = $('body')
-  Current = Fractals[$body.attr('class')]
-  $('button', $controls.add($fractals)).click (e) -> e.stopPropagation()
-  $('button', $fractals).click ->
-    $this = $(this)
-    $this.button('toggle');
-    frac = $this.data('fractal')
-    Current = Fractals[frac]
-    $body.removeClass().addClass(frac)
-  $('.control', $controls).click (e) ->
-    e.stopPropagation()
-    if $controls.is('.going')
-      $controls.removeClass('going').addClass('paused')
-      main = clearInterval(main)
-    else
-      $controls.removeClass('paused').addClass('going')
-      go()
-  $('.clear', $controls).click (e) ->
-    surface.clearRect(0, 0, surface.canvas.width, surface.canvas.height)
-    e.stopPropagation()
-    stop()
-  $window = $(window)
-  $window.resize((e) ->
-    surface.canvas.width = window.innerWidth
-    surface.canvas.height = window.innerHeight
-    stop()
-  ).trigger('resize')
-
-  $window.click (e) ->
-    if $controls.is('.paused') then fractals = []
-    $controls.removeClass('paused').addClass('going')
-    [x, y] = [e.pageX, e.pageY]
-    x -= document.body.scrollLeft
-    y -= document.body.scrollTop
-    fractals.push(new Current(surface, x, y, HEADING, SIZE))
-    go()
-
-# TODO: Move out of this file
-$ ->
-  $('.btn-group').button()
+  hidden: Plant

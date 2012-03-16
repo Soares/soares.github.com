@@ -11,6 +11,9 @@
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+.container { width: 940px; margin-left: auto; margin-right: auto; *zoom: 1; }
+.container:before, .container:after { display: table; content: ""; }
+.container:after { clear: both; }
 
 /* =============================================================================
    Less Mixins
@@ -21,4 +24,22 @@
   -khtml-opacity: @opacity;
   -webkit-opacity: @opacity;
   opacity: @opacity;
+}
+
+.no-select() {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: -moz-none;
+  -o-user-select: -moz-none;
+  user-select: none;
+}
+
+.animate(@attr, @time) {
+  -webkit-transition: @attr @time;
+  -moz-transition: @attr @time;
+  -ms-transition: @attr @time;
+  -o-transition: @attr @time;
+  -o-transition: @attr @time;
+  transition: @attr @time;
 }

@@ -1,0 +1,73 @@
+@import "normalize.less";
+@import "helpers.less";
+@import "media-queries.less";
+@import "print.less";
+@import "btn.less";
+@import "icons.less";
+
+body {
+  font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+p {
+  margin: 0 0 9px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 18px;
+  border-left: 5px solid #eeeeee;
+
+  p {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22.5px;
+  }
+
+  small {
+    display: block;
+    line-height: 18px;
+    color: #999999;
+
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+  
+  &:before, &:after {
+    content: "";
+  }
+}
+
+#overlay {
+  .no-select();
+  margin-top: 2em;
+  z-index: 1;
+}
+
+#card-container {
+  .no-select();
+}
+
+.main {
+  background: rgba(255,255,255,.9);
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 320px;
+  overflow: auto;
+  padding: 3%;
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    float: left;
+  }
+}
