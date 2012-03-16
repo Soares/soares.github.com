@@ -30,13 +30,15 @@ $ ->
     stop()
   ).trigger('resize')
   
-  $('#svg, #canvas').click (e) ->
+  $('#svg, #canvas, #dot, #halo').mouseup (e) ->
+    e.stopPropagation()
     if $controls.is('.paused') then fractals = []
     $controls.removeClass('paused').addClass('going')
     x = e.pageX - document.body.scrollLeft
     y = e.pageY - document.body.scrollTop
     fractals.push(new Current(context, x, y, HEADING, SIZE))
     go()
+    false
 
   Current = Fractals[$body.attr('class')]
 
