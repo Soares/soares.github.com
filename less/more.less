@@ -1,43 +1,6 @@
-@import "normalize.less";
-@import "media-queries.less";
-@import "helpers.less";
-@import "print.less";
-@import "bootstrap.less";
-
-body {
-  font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
-  font-size: 1em;
-  line-height: 1.4em;
-}
-
-#overlay {
-  margin-top: 2em;
-  z-index: 1;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-#card-container {
-  /* TODO: Abstract this mixin */
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
+@import "base.less";
 
 #more {
-  box-sizing: border-box;
-  background: rgba(255,255,255,.9);
-  padding: 3% 3%;
-  max-width: 320px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  overflow: auto;
   text-align: center;
   font-size: 1.2;
   p { text-shadow: 0 1px 1px #888; clear: right; }
@@ -51,24 +14,3 @@ body {
   }
   #to-card:before { content: "« "; }
 }
-
-/* Media queries */
-
-@media only screen and (min-width: 768px) {
-  #more { float: left; }
-}
-
-/* Icon Overrides */
-.custom {
-  width: 24px;
-  height: 24px;
-  background-position: 0 0;
-}
-.icon-file {
-  background-image: url("../img/file.png") !important;
-  width: 18px;
-}
-.icon-twitter { background-image: url("../img/twitter.png") !important; }
-.icon-tumblr { background-image: url("../img/tumblr.png") !important; }
-.icon-linkedin { background-image: url("../img/linkedin.png") !important; }
-.icon-archives { background-image: url("../img/archives.png") !important; }

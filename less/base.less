@@ -1,0 +1,40 @@
+@import "normalize.less";
+@import "helpers.less";
+@import "media-queries.less";
+@import "print.less";
+@import "icons.less";
+/* TODO: Pare down bootstrap */
+@import "bootstrap.less";
+
+body {
+  font-family: minion-pro-1, minion-pro-2, Palatino, Georgia, 'Times New Roman', serif;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+#overlay {
+  .no-select();
+  margin-top: 2em;
+  z-index: 1;
+}
+
+#card-container {
+  .no-select();
+}
+
+.main {
+  background: rgba(255,255,255,.9);
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 320px;
+  overflow: auto;
+  padding: 3%;
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    float: left;
+  }
+}
