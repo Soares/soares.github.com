@@ -6,6 +6,7 @@ FPS = 0
 # Globals
 speed = if FPS == 0 then 0 else 1000/FPS
 fractals = []
+ticker = 0
 
 $ ->
   go = ->
@@ -45,10 +46,12 @@ $ ->
     $body.removeClass().addClass(frac)
 
   $('.control', $controls).click (e) ->
-    $controls.toggleClass('going').toggleClass('paused')
     if $controls.is('.going')
+      $controls.removeClass('going').addClass('paused')
       ticker = clearInterval(ticker)
-    else go()
+    else
+      $controls.removeClass('paused').addClass('going')
+      go()
 
   $('.clear', $controls).click (e) ->
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)

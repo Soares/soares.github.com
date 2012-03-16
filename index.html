@@ -15,14 +15,17 @@
   <link rel="stylesheet/less" href="less/main.less">
   <script src="js/libs/less-1.2.1.min.js"></script>
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+  <!-- Hey there, and welcome to the source of my website!
+       There's a secret hidden somewhere around here,
+       so keep your eyes peeled. -->
 </head>
 <body class="tri">
   <!--Version: 0.8.1 -->
   <!--[if lt IE 7]><p class=chromeframe>
-  Your browser is <em>ancient!</em>
-  <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
-  <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
-  to experience this site.
+    Your browser is <em>ancient!</em>
+    <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+    <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+    to experience this site.
   </p><![endif]-->
   <canvas id="canvas"></canvas>
   <svg xmlns="http://www.w3.org/2000/svg" id="svg">
@@ -70,6 +73,7 @@
         </blockquote>
         <div id="fractals" class="btn-group" data-toggle="buttons-radio">
           <button class="active colored yellow btn" data-fractal="tri"><i class="white icon-triforce"></i></button>
+          <!-- I wonder if you could change the data attribute for a hidden fractal...-->
           <button class="colored green btn" data-fractal="earth"><i class="white icon-leaf"></i></button>
           <button class="colored blue btn" data-fractal="snow"><i class="white icon-snowflake"></i></button>
           <button class="colored red btn" data-fractal="fire"><i class="white icon-fire"></i></button>
@@ -95,6 +99,7 @@
   <script type="text/coffeescript" src="coffee/glider.coffee"></script>
   <script type="text/coffeescript" src="coffee/more.coffee"></script>
   <script type="text/coffeescript" src="coffee/dot.coffee"></script>
+  <script type="text/coffeescript" src="coffee/draw.coffee"></script>
   <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
   <script type="text/coffeescript" src="coffee/main.coffee"></script>
   <script type="text/coffeescript" src="coffee/ui.coffee"></script>
