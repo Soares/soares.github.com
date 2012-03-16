@@ -1,37 +1,33 @@
-CLESS = lessc
-CCSS = cleancss
-CCOFFEE = coffee -clp
-CJS = compressJS.sh
-LESS = less
-COFFEE = coffee
-CSS = css
-JS = js
-BIN = tools
-LIB = lib
-MAIN = main
+LESS = tools/lessc
+CSS = tools/cleancss
+COFFEE = tools/coffee -clp
+JS = tools/compressJS.sh
 
-.PHONY: media less
+.PHONY: media clean
 
 media:
-	make less
-	make coffee
-	make $(JS)/$(LIB).min.js
-	make $(JS)/$(MAIN).min.js
-	rm js/$(MAIN).js
+	make css/more.css
+	make css/main.css
+	make js/lib.min.js
+	make js/main.min.js
 
-less: $(LESS)/*.less
-	$(BIN)/$(CLESS) $(LESS)/main.less | $(BIN)/$(CCSS) > $(CSS)/main.css
-	$(BIN)/$(CLESS) $(LESS)/more.less | $(BIN)/$(CCSS) > $(CSS)/more.css
+js/main.js: coffee/dot.coffee coffee/draw.coffee coffee/fractals.coffee coffee/glider.coffee coffee/glider.coffee coffee/main.coffee coffee/ui.coffee
+	$(COFFEE) $^ > js/main.js
 
-$(JS)/$(MAIN).js:
-	$(BIN)/$(CCOFFEE) $(COFFEE)/*.coffee > $(JS)/main.js
+js/lib.min.js: js/libs/bootstrap-button.js js/libs/color.min.js js/libs/underscore-1.3.1.min.js
+	$(JS) $^ > js/lib.min.js
 
-$(JS)/$(LIB).min.js:
-	$(BIN)/$(CJS) js/libs/* > js/$(LIB).min.js
+js/main.min.js: js/main.js
+	$(JS) js/main.js > js/main.min.js
 
-$(JS)/$(MAIN).min.js: $(JS)/$(MAIN).js
-	$(BIN)/$(CJS) js/$(MAIN).js > js/$(MAIN).min.js
+css/more.css: less/base.less less/btn.less less/helpers.less less/icons.less less/normalize.less less/print.less
+	$(LESS) less/more.less | $(CSS) > css/more.css
+
+css/main.css: css/more.css less/main.less
+	$(LESS) less/main.less | $(CSS) > css/main.css
+
+*.css:
 
 clean:
-	rm js/libs/$(MAIN).min.js -f
+	rm js/libs/main.min.js -f
 	rm css/* -f
