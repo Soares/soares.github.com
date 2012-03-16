@@ -8,12 +8,12 @@ gliders = [
   [[0, 0, 1], [2, 3, 0], [0, 4, 5]]]
 
 @glide = ($glider) ->
-  for y in [0...glider[0].length]
+  for y in [0...gliders[0].length]
     $row = $('tr', $glider).eq(y)
     cells[y] = []
-    for x in [0...glider[0][y].length]
+    for x in [0...gliders[0][y].length]
       $cell = $('td', $row).eq(x)
-      live[glider[0][y][x]] = $('a', $cell) if glider[0][y][x] > 0
+      live[gliders[0][y][x]] = $('a', $cell) if gliders[0][y][x] > 0
       cells[y][x] = $cell
 
   iterate = ->
