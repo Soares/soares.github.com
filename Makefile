@@ -10,23 +10,26 @@ BIN = tools
 LIB = lib
 MAIN = main
 
-.PHONY: media less coffee js
+.PHONY: media less
 
 media:
 	make less
 	make coffee
-	make js
+	make $(JS)/$(LIB).min.js
+	make $(JS)/$(MAIN).min.js
 	rm js/$(MAIN).js
 
 less: $(LESS)/*.less
 	$(BIN)/$(CLESS) $(LESS)/main.less | $(BIN)/$(CCSS) > $(CSS)/main.css
 	$(BIN)/$(CLESS) $(LESS)/more.less | $(BIN)/$(CCSS) > $(CSS)/more.css
 
-coffee: $(COFFEE)/*.coffee
+$(JS)/$(MAIN).js:
 	$(BIN)/$(CCOFFEE) $(COFFEE)/*.coffee > $(JS)/main.js
 
-js: $(JS)/*.js
+$(JS)/$(LIB).min.js:
 	$(BIN)/$(CJS) js/libs/* > js/$(LIB).min.js
+
+$(JS)/$(MAIN).min.js: $(JS)/$(MAIN).js
 	$(BIN)/$(CJS) js/$(MAIN).js > js/$(MAIN).min.js
 
 clean:
