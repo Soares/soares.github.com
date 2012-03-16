@@ -1,4 +1,5 @@
 @import "base.less";
+@import "card.less";
 @import "more.less";
 @wait: .8s;
 
@@ -13,11 +14,6 @@
 
 a {
   .animate(color, @wait);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 body {
@@ -97,6 +93,11 @@ body {
 #dot, #halo {
   .opacity(.7);
   visibility: hidden;
+}
+
+#business-card {
+  display: none;
+  padding-top: 0;
 }
 
 #card {
@@ -186,4 +187,9 @@ blockquote {
   float: left;
   display: none;
   margin-top: 1em;
+}
+
+@media print {
+  #card-container { display: none; }
+  #business-card { display: block; }
 }

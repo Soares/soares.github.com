@@ -1,0 +1,63 @@
+@import "base.less";
+
+a.red { color: #F00 !important; }
+a.purple { color: #80d !important; }
+a.green { color: #0a0 !important; }
+a.blue { color: #00a !important; }
+
+#business-card {
+  padding: 5%;
+}
+#business-card div {
+  box-sizing: border-box;
+  position: relative;
+  width: 3.75in;
+  height: 2in;
+  padding: 1/8in;
+
+  img {
+    width: 1in;
+    height: 1in;
+    position: absolute;
+    bottom: .125in;
+  }
+
+  ul {
+    list-style: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: .125in;
+    li {
+      line-height: 1;
+      padding-top: 8px;
+    }
+  }
+
+  h1 {
+    font-size: 1em;
+    position: absolute;
+    top: .125in;
+    margin: 0;
+  }
+}
+
+#front {
+  ul { right: .125in; text-align: right; }
+  img, h1 { left: .125in; }
+  box-shadow: 1px 1px 1px 2px #ccc;
+}
+#back {
+  font-family: monospace;
+  ul { left: .125in; text-align: left; }
+  h1 { right: .125in; }
+  img { right: .125in; border: 1px solid #ccc; box-sizing: border-box; }
+  box-shadow: -1px 1px 1px 2px #ccc;
+}
+#front { float: left; }
+#back { float: right; }
+
+@media print {
+  #business-card div { box-shadow: none; border: 1px solid #ccc; }
+  #front { page-break-after: always; margin-bottom: 1em; }
+}
