@@ -9,7 +9,6 @@ Put caps on the fractals
 Bugs
 ====
 Button groups aren't working on ie
-css:after content isn't clickable
 if you cilck a link in 'more' it makes a fractal
 There's something going on with clicks. Halo?
 
