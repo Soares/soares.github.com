@@ -132,8 +132,19 @@ blockquote:before,blockquote:after{content:"";}
 #overlay{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;margin-top:2em;z-index:1;}
 #card-container{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;}
 .main{background:rgba(255, 255, 255, 0.9);box-sizing:border-box;margin:0 auto;max-width:320px;overflow:auto;padding:3%;position:relative;z-index:1;}
-@media only screen and (min-width:768px){.main{float:left;}}#more{text-align:center;font-size:1.2;}#more p{text-shadow:0 1px 1px #888;clear:right;}
-#more table{margin:2em auto;empty-cells:show;}
-#more #to-card{margin-top:1.5em;float:left;}
-#more #to-card:before{content:"« ";}
-#iterate{float:right;margin-bottom:1em;display:none;}
+@media only screen and (min-width:768px){.main{float:left;}}a.red{color:#F00 !important;}
+a.purple{color:#80d !important;}
+a.green{color:#0a0 !important;}
+a.blue{color:#00a !important;}
+#business-card{padding:5%;}
+#business-card div{box-sizing:border-box;position:relative;width:3.75in;height:2in;padding:0.125in;}#business-card div img{width:1in;height:1in;position:absolute;bottom:.125in;}
+#business-card div ul{list-style:none;position:absolute;margin:0;padding:0;bottom:.125in;}#business-card div ul li{line-height:1;padding-top:8px;}
+#business-card div h1{font-size:1em;position:absolute;top:.125in;margin:0;}
+#front{box-shadow:1px 1px 1px 2px #ccc;}#front ul{right:.125in;text-align:right;}
+#front img,#front h1{left:.125in;}
+#back{font-family:monospace;box-shadow:-1px 1px 1px 2px #cccccc;}#back ul{left:.125in;text-align:left;}
+#back h1{right:.125in;}
+#back img{right:.125in;border:1px solid #ccc;box-sizing:border-box;}
+#front{float:left;}
+#back{float:right;}
+@media print{#business-card div{box-shadow:none;border:1px solid #ccc;} #front{page-break-after:always;margin-bottom:1em;}}
