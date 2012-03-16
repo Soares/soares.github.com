@@ -57,8 +57,8 @@ $ ->
   cur.x = parseFloat($dot.attr('cx'))
   cur.y = parseFloat($dot.attr('cy'))
   $(window).mousemove (e) ->
+    $dot.css('visibility', 'visible')
+    $halo.css('visibility', 'visible')
     pos.x = e.pageX - document.body.scrollLeft
     pos.y = e.pageY - document.body.scrollTop
-  $dot.css('visibility', 'visible')
-  $halo.css('visibility', 'visible')
   tick = setInterval(closer, if FPS == 0 then 0 else 1000/FPS)

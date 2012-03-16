@@ -96,7 +96,7 @@ class Serpinsky extends Fractal
   constructor: (pen, x, y, heading, size) ->
     theta = (thits % 6) / 6
     hue = (thits * .29) % 1
-    @colors = new ColorWheel(new Oscilator(hue, .5, .252, .76))
+    @colors = new ColorWheel(new Oscilator(hue, .5, .265, .76))
     super(pen, x, y, heading + theta, size)
     thits++
 
