@@ -181,73 +181,8 @@ class Tree extends Fractal
     turtle.jump(@x,@y).look(@theta)
     super
 
-Fractals =
+@Fractals =
   fire: Dragon
   earth: Tree
   snow: Snowflake
   tri: Serpinsky
-
-HEADING = 0
-SIZE = 1
-FPS = 0
-speed = if FPS == 0 then 0 else 1000/FPS
-fractals = []
-main = undefined
-$controls = undefined
-pos = undefined
-
-update = ->
-  fractal.step() for fractal in fractals
-
-go = ->
-  main = main or setInterval(update, speed)
-
-stop = ->
-  fractals = []
-  $controls?.removeClass('going').removeClass('paused')
-  main = clearInterval(main)
-
-$ ->
-  surface = document.getElementById('canvas').getContext('2d')
-  $controls = $('#controls')
-  $fractals = $('#fractals')
-  $body = $('body')
-  Current = Fractals[$body.attr('class')]
-  $('button', $controls.add($fractals)).click (e) -> e.stopPropagation()
-  $('button', $fractals).click ->
-    $this = $(this)
-    $this.button('toggle');
-    frac = $this.data('fractal')
-    Current = Fractals[frac]
-    $body.removeClass().addClass(frac)
-  $('.control', $controls).click (e) ->
-    e.stopPropagation()
-    if $controls.is('.going')
-      $controls.removeClass('going').addClass('paused')
-      main = clearInterval(main)
-    else
-      $controls.removeClass('paused').addClass('going')
-      go()
-  $('.clear', $controls).click (e) ->
-    surface.clearRect(0, 0, surface.canvas.width, surface.canvas.height)
-    e.stopPropagation()
-    stop()
-  $window = $(window)
-  $window.resize((e) ->
-    surface.canvas.width = window.innerWidth
-    surface.canvas.height = window.innerHeight
-    stop()
-  ).trigger('resize')
-
-  $window.click (e) ->
-    if $controls.is('.paused') then fractals = []
-    $controls.removeClass('paused').addClass('going')
-    [x, y] = [e.pageX, e.pageY]
-    x -= document.body.scrollLeft
-    y -= document.body.scrollTop
-    fractals.push(new Current(surface, x, y, HEADING, SIZE))
-    go()
-
-# TODO: Move out of this file
-$ ->
-  $('.btn-group').button()

@@ -61,4 +61,4 @@ $ ->
     pos.y = e.pageY - document.body.scrollTop
   $dot.css('visibility', 'visible')
   $halo.css('visibility', 'visible')
-  tick = setInterval(closer, 1000/FPS)
+  tick = setInterval(closer, if FPS == 0 then 0 else 1000/FPS)
