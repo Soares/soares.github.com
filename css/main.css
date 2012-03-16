@@ -286,10 +286,10 @@ body.fire #dot{fill:#fa0;}
 body.earth #dot{fill:#a55d35;}
 body.snow #dot{fill:#6cc;}
 body.tri #dot{fill:#c2f;}
-body.fire a{color:#d64;}body.fire a:visited{color:#800;}
-body.tri a{color:#b4b;}body.tri a:visited{color:#551A8B;}
-body.earth a{color:#6d4;}body.earth a:visited{color:#080;}
-body.snow a{color:#00F;}body.snow a:visited{color:#007;}
+body.fire a{color:#c94925;}body.fire a:visited{color:#e99b85;}
+body.tri a{color:#963696;}body.tri a:visited{color:#cf7ccf;}
+body.earth a{color:#3eab1f;}body.earth a:visited{color:#82e367;}
+body.snow a{color:#0000ff;}body.snow a:visited{color:#8080ff;}
 #canvas,#svg{cursor:pointer;height:100%;left:0;position:fixed;top:0;width:100%;z-index:0;}
 #dot,#halo{-moz-opacity:0.7;-khtml-opacity:0.7;-webkit-opacity:0.7;opacity:0.7;-moz-opacity:0.7;-khtml-opacity:0.7;-webkit-opacity:0.7;opacity:0.7;-moz-opacity:0.7;-khtml-opacity:0.7;-webkit-opacity:0.7;opacity:0.7;-moz-opacity:0.7;-khtml-opacity:0.7;-webkit-opacity:0.7;opacity:0.7;visibility:hidden;}
 #card img{float:right;}
