@@ -28,17 +28,19 @@ $ ->
     context.canvas.width = window.innerWidth
     context.canvas.height = window.innerHeight
     stop()
-  ).trigger('resize').click (e) ->
+  ).trigger('resize')
+  
+  $('#svg, #canvas, #dot, #halo').mouseup (e) ->
+    e.stopPropagation()
     if $controls.is('.paused') then fractals = []
     $controls.removeClass('paused').addClass('going')
     x = e.pageX - document.body.scrollLeft
     y = e.pageY - document.body.scrollTop
     fractals.push(new Current(context, x, y, HEADING, SIZE))
     go()
+    false
 
   Current = Fractals[$body.attr('class')]
-
-  $('button', $controls.add($fractals)).click (e) -> e.stopPropagation()
 
   $('button', $fractals).click ->
     frac = $(this).button('toggle').data('fractal')

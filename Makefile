@@ -1,37 +1,50 @@
-CLESS = lessc
-CCSS = cleancss
-CCOFFEE = coffee -clp
-CJS = compressJS.sh
-LESS = less
-COFFEE = coffee
-CSS = css
-JS = js
-BIN = tools
-LIB = lib
-MAIN = main
+LESS = tools/lessc --compress --O2
+CSS = tools/cleancss
+COFFEE = tools/coffee -clp
+JS = java -jar tools/closure.jar
+# Order matters
+COFFEES = $(addprefix coffee/, $(addsuffix .coffee, ui dot glider more draw fractals main))
+LIBS = $(addprefix js/libs/, $(shell ls js/libs))
+BASE_LESS = $(addprefix less/, $(shell ls less | grep -vE "(main|more|card)"))
 
-.PHONY: media less
+.PHONY: media less coffee devel clean
 
 media:
-	make less
+	make js/lib.min.js
 	make coffee
-	make $(JS)/$(LIB).min.js
-	make $(JS)/$(MAIN).min.js
-	rm js/$(MAIN).js
+	make less
 
-less: $(LESS)/*.less
-	$(BIN)/$(CLESS) $(LESS)/main.less | $(BIN)/$(CCSS) > $(CSS)/main.css
-	$(BIN)/$(CLESS) $(LESS)/more.less | $(BIN)/$(CCSS) > $(CSS)/more.css
+watch:
+	$(COFFEE) -w coffee/* > js/main.min.js
 
-$(JS)/$(MAIN).js:
-	$(BIN)/$(CCOFFEE) $(COFFEE)/*.coffee > $(JS)/main.js
+less:
+	make css/more.css
+	make css/card.css
+	make css/main.css
 
-$(JS)/$(LIB).min.js:
-	$(BIN)/$(CJS) js/libs/* > js/$(LIB).min.js
+coffee:
+	make js/main.min.js
 
-$(JS)/$(MAIN).min.js: $(JS)/$(MAIN).js
-	$(BIN)/$(CJS) js/$(MAIN).js > js/$(MAIN).min.js
+js/lib.min.js: $(LIBS)
+	$(JS) $^ > js/lib.min.js
+
+js/main.min.js: $(COFFEES)
+	$(COFFEE) $^ | $(JS) > js/main.min.js
+
+css/more.css: $(BASE_LESS) less/more.less
+	$(LESS) less/more.less > css/more.css
+
+css/card.css: $(BASE_LESS) less/card.less
+	$(LESS) less/card.less > css/card.css
+
+css/main.css: css/more.css css/card.css less/main.less
+	$(LESS) less/main.less > css/main.css
+
+*.js:
+*.css:
+*.less:
 
 clean:
-	rm js/libs/$(MAIN).min.js -f
+	rm js/main.min.js -f
+	rm js/lib.min.js -f
 	rm css/* -f
