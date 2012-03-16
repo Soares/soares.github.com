@@ -1,4 +1,5 @@
 @import "base.less";
+@import "more.less";
 @wait: .8s;
 
 a {
@@ -103,8 +104,19 @@ body {
   }
 }
 
+#more {
+  display: none;
+}
+
 #to-more:after {
   content: " »";
+}
+
+#more table {
+  margin-bottom: 0;
+}
+#iterate {
+  display: inline-block;
 }
 
 ul {
