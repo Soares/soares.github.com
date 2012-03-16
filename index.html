@@ -11,9 +11,7 @@
   <meta name="author" content="Nathaniel Soares">
   <meta name="viewport" content="width=device-width">
   <link rel="icon" href="favicon.png">
-  <!--TODO: Compile -->
-  <link rel="stylesheet/less" href="less/main.less">
-  <script src="js/libs/less-1.2.1.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
   <script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
   <!-- Hey there, and welcome to the source of my website!
        There's a secret hidden somewhere around here,
@@ -88,25 +86,12 @@
     </div>
   </div>
 
-  <!--TODO: Decide if we want to use the google version (if available)-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-  <script src="js/libs/underscore-1.3.1.min.js"></script>
-  <script src="js/libs/bootstrap-button.js"></script>
-  <script src="js/libs/color.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/local/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="js/lib.min.js"></script>
+  <script src="js/main.min.js"></script>
 
-  <!--TODO: Load other scripts here-->
-  <!--TODO: Compile, combine, & minify (then stop using coffeescript)-->
-  <script src="js/libs/coffee-script.js"></script>
-  <script type="text/coffeescript" src="coffee/glider.coffee"></script>
-  <script type="text/coffeescript" src="coffee/more.coffee"></script>
-  <script type="text/coffeescript" src="coffee/dot.coffee"></script>
-  <script type="text/coffeescript" src="coffee/draw.coffee"></script>
-  <script type="text/coffeescript" src="coffee/fractals.coffee"></script>
-  <script type="text/coffeescript" src="coffee/main.coffee"></script>
-  <script type="text/coffeescript" src="coffee/ui.coffee"></script>
-
-  <!--TODO: Set this up
+  <!--TODO: Set up google analytics
   <script src="js/script.js"></script>
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
