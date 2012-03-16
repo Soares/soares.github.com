@@ -1,4 +1,7 @@
 /* Icon Overrides */
+button i, a i {
+  vertical-align: middle;
+}
 i.big {
   width: 24px;
   height: 24px;
@@ -22,15 +25,56 @@ i.big {
 }
 .icon-snowflake {
   background-image: url("../img/snowflake.png") !important;
-  background-position: 0 0;
+  background-position: 0 0 !important;
   &.white {
     background-image: url("../img/snowflake-white.png") !important;
   }
 }
 .icon-triforce {
   background-image: url("../img/triforce.png") !important;
-  background-position: 0 0;
+  background-position: 0 0 !important;
   &.white {
     background-image: url("../img/triforce-white.png") !important;
   }
+}
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  *margin-right: .3em;
+}
+[class^="icon-"]:last-child, [class*=" icon-"]:last-child {
+  *margin-left: 0;
+}
+.white {
+  background-image: url("../img/glyphicons-halflings-white.png") !important;
+}
+.icon-trash {
+  background-position: -456px 0;
+}
+.icon-backward {
+  background-position: -240px -72px;
+}
+.icon-play {
+  background-position: -264px -72px;
+}
+.icon-pause {
+  background-position: -288px -72px;
+}
+.icon-stop {
+  background-position: -312px -72px;
+}
+.icon-forward {
+  background-position: -336px -72px;
+}
+.icon-leaf {
+  background-position: -48px -120px;
+}
+.icon-fire {
+  background-position: -72px -120px;
 }

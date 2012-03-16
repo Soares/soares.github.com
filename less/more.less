@@ -3,14 +3,35 @@
 #more {
   text-align: center;
   font-size: 1.2;
-  p { text-shadow: 0 1px 1px #888; clear: right; }
+
+  p {
+    text-shadow: 0 1px 1px #888; clear: right;
+  }
+
   table {
     margin: 2em auto;
     empty-cells: show;
   }
+
   #to-card {
     margin-top: 1.5em;
     float: left;
   }
-  #to-card:before { content: "« "; }
+
+  #to-card:before {
+    content: "« ";
+  }
+}
+
+#iterate {
+  float: right;
+  margin-bottom: 1em;
+  display: none; /* Activate if JS is available */
+  /* TODO: Does this look good with this gone?
+  i {
+    width: 15px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+  */
 }

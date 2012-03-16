@@ -1,0 +1,145 @@
+
+@import "base.less";
+@import "more.less";
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  margin-bottom: .2em;
+  overflow: hidden;
+  .quote {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+#attribution {
+  .opacity(.5);
+  .said {
+    display: block;
+    overflow: hidden;
+    text-align: right;
+  }
+  overflow: hidden;
+}
+
+#canvas, #svg {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+#dot, #halo {
+  .opacity(.7);
+  visibility: hidden;
+}
+
+#card {
+  img {
+    float: right;
+  }
+
+  h1 {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1em;
+    margin-top: .5em;
+    margin: 0;
+  }
+
+}
+
+#controls {
+  float: right;
+  clear: right;
+  margin-top: 1em;
+  text-align: center;
+
+  .clear, .control {
+    display: none;
+  }
+
+  &.going, &.paused {
+    .clear, .control {
+      display: inline;
+    }
+  }
+
+  &.going .control .icon-pause { display: inline block; }
+  &.going .control .icon-play { display: none; }
+  &.paused .control .icon-play { display: inline block; }
+  &.paused .control .icon-pause { display: none; }
+}
+
+#fractals {
+  float: left;
+  clear: both;
+  margin-top: 1em;
+}
+
+ul {
+  margin: .5em 0;
+
+  li {
+    list-style: none;
+    line-height: 1.8em;
+
+    span {
+      display: inline-block;
+      font-family: "Courier New", monospace;
+      margin-right: 1em;
+    }
+  }
+}
+
+/* Link colors */
+body.tri { a:not(:visited) { color: #b4b; } }
+body.snow { a:visited { color: #008; } }
+body.fire { a { color: #d64; } a:visited { color: #800; } }
+body.earth { a { color: #6d4; } a:visited { color: #080; } }
+
+/* Transition timings */
+body, img, .quote, .said {
+  .animate(all, .8s);
+}
+
+/* Theming */
+body {
+  img.only { width: 0; height: 0; .opacity(0); }
+  .quote.only { height: 0; .opacity(0); }
+  .said.only { width: 0; height: 0; .opacity(0); }
+
+  &.fire img.only.fire,
+  &.earth img.only.earth,
+  &.snow img.only.snow,
+  &.tri img.only.tri { width: 64px; height: 64px; .opacity(1); }
+
+  &.fire .quote.only.fire,
+  &.earth .quote.only.earth,
+  &.snow .quote.only.snow,
+  &.tri .quote.only.tri { height: 100%; .opacity(1); }
+
+  &.fire .said.only.fire,
+  &.earth .said.only.earth,
+  &.snow .said.only.snow,
+  &.tri .said.only.tri { height: 100%; width: 100%; .opacity(1); }
+
+  &.fire #halo { stroke: #fdd017; }
+  &.earth #halo { stroke: #a5dd35; }
+  &.snow #halo { stroke: #8ee; }
+  &.tri #halo { stroke: #35f; }
+  &.fire #dot { fill: #fa0; }
+  &.earth #dot { fill: #a55d35; }
+  &.snow #dot { fill: #6cc; }
+  &.tri #dot { fill: #c2f; }
+}

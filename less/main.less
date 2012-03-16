@@ -12,23 +12,29 @@ a {
 
 body {
   img.only { width: 0; height: 0; .opacity(0); }
-  .quote.only { height: 0; .opacity(0); }
-  .said.only { width: 0; height: 0; .opacity(0); }
+  blockquote span.only { height: 0; .opacity(0); }
+  blockquote small.only { width: 0; height: 0; .opacity(0); }
 
   &.fire img.only.fire,
   &.earth img.only.earth,
   &.snow img.only.snow,
-  &.tri img.only.tri { width: 64px; height: 64px; .opacity(1); }
+  &.tri img.only.tri {
+    width: 64px; height: 64px; .opacity(1);
+  }
 
-  &.fire .quote.only.fire,
-  &.earth .quote.only.earth,
-  &.snow .quote.only.snow,
-  &.tri .quote.only.tri { height: 100%; .opacity(1); }
+  &.fire blockquote span.only.fire,
+  &.earth blockquote span.only.earth,
+  &.snow blockquote span.only.snow,
+  &.tri blockquote span.only.tri {
+    height: 100%; .opacity(1);
+  }
 
-  &.fire .said.only.fire,
-  &.earth .said.only.earth,
-  &.snow .said.only.snow,
-  &.tri .said.only.tri { height: 100%; width: 100%; .opacity(1); }
+  &.fire blockquote small.only.fire,
+  &.earth blockquote small.only.earth,
+  &.snow blockquote small.only.snow,
+  &.tri blockquote small.only.tri {
+    height: 100%; width: 100%; .opacity(1);
+  }
 
   &.fire #halo { stroke: #fdd017; }
   &.earth #halo { stroke: #a5dd35; }
@@ -97,8 +103,13 @@ body {
   }
 }
 
+#to-more:after {
+  content: " »";
+}
+
 ul {
   margin: .5em 0;
+  padding: 0;
 
   li {
     list-style: none;
@@ -114,23 +125,24 @@ blockquote {
   margin-bottom: .2em;
   overflow: hidden;
 
-  .quote {
+  span {
     .animate(height, @wait);
     .animate(opacity, @wait);
     overflow: hidden;
     display: block;
   }
-}
-#attribution {
-  .opacity(.5);
-  overflow: hidden;
 
-  .said {
+  small {
+    .opacity(.5);
     .animate(height, @wait);
     .animate(opacity, @wait);
     display: block;
     overflow: hidden;
     text-align: right;
+
+    &.placeholder:before {
+      content: "";
+    }
   }
 }
 
