@@ -3,14 +3,16 @@ class Fractal
   rules: {}
   angle: 1/4
   position: 0
+  cap: 0
 
-  constructor: (@pen, @x, @y, heading, size) ->
+  constructor: (@pen, @x, @y, heading, size, @die) ->
     turtle = new Turtle(pen, @x, @y, heading, size)
     @states = []
     @colors = @colors.make()
     @color = @colors.value()
     @progress = 0
     @axiom = (@axiom+'0').split('')
+    @iterations = 0
     @actions =
       'F': => turtle.forward(size)
       'G': => turtle.go(size)
@@ -21,6 +23,10 @@ class Fractal
       '0': => @iterate(turtle, size, heading)
 
   iterate: (turtle, size, heading) =>
+    @iterations++
+    if @cap > 0 and @iterations >= @cap
+      delete @axiom
+      @die()
     @color = @colors.step().value()
     @reset?(turtle, size, heading)
     @progress--
@@ -29,7 +35,8 @@ class Fractal
   step: (skip) =>
     @pen.strokeStyle = @color
     symbol = @axiom.shift()
-    @axiom = @axiom.concat((@rules?[symbol] ? symbol).split(''))
+    if @cap - @iterations > 1
+      @axiom = @axiom.concat((@rules?[symbol] ? symbol).split(''))
     if skip then return this
     @actions[symbol]?()
     @progress++
@@ -42,10 +49,11 @@ class Dragon extends Fractal
     'Y': 'FX-Y'
   angle: 1/4
   colors: new ColorWheel(new Oscilator(.25, .075, .5, .075))
+  cap: 15
 
-  constructor: (pen, x, y, heading, size) ->
+  constructor: (pen, x, y, heading, size, die) ->
     @batching = 0
-    super(pen, x, y, heading, size * 3)
+    super(pen, x, y, heading, size * 3, die)
 
   reset: =>
     @batching = @progress
@@ -63,6 +71,7 @@ class Snowflake extends Fractal
   rules:
     'F': 'F-F++F-F'
   angle: 1/6
+  cap: 9
   colors: new ColorWheel(
     new Oscilator(.125, .08, 1, .54),
     1,
@@ -74,10 +83,11 @@ class Plant extends Fractal
     'X': 'F-[[X]+X]+F[+FX]-X'
     'F': 'FF'
   angle: -25/360
-  colors: new ColorWheel(new Oscilator(0, .105, 1, .275))
+  colors: new ColorWheel(new Oscilator(.67, .09, -.4, .23))
+  cap: 8
 
-  constructor: (pen, x, y, heading, size) ->
-    super(pen, x, y, heading + 1/4, size * 3)
+  constructor: (pen, x, y, heading, size, die) ->
+    super(pen, x, y, heading + 1/4, size * 3, die)
 
   reset: (turtle, size) =>
     turtle.jump(turtle.x + size * .5 * Math.pow(@progress, .5), @y).look(@angle)
@@ -90,14 +100,15 @@ class Serpinsky extends Fractal
     'X': 'Y-FX-FY'
     'Y': 'X+FY+FX'
   angle: -1/6
+  cap: 9
 
   reset: =>
 
-  constructor: (pen, x, y, heading, size) ->
+  constructor: (pen, x, y, heading, size, die) ->
     theta = (thits % 6) / 6
     hue = (thits * .29) % 1
     @colors = new ColorWheel(new Oscilator(hue, .5, .265, .76))
-    super(pen, x, y, heading + theta, size)
+    super(pen, x, y, heading + theta, size, die)
     thits++
 
 class Tree extends Fractal
@@ -105,10 +116,11 @@ class Tree extends Fractal
   rules:
     'X': 'F[-FFX]+FX'
   angle: 1/16
-  colors: new ColorWheel(new Oscilator(0, .105, .8, .265))
+  colors: new ColorWheel(new Oscilator(.80, .1, .6, .155))
+  cap: 11
 
-  constructor: (pen, x, y, heading, size) ->
-    super(pen, x, y, heading - 1/4, size * 6)
+  constructor: (pen, x, y, heading, size, die) ->
+    super(pen, x, y, heading - 1/4, size * 6, die)
 
   reset: (turtle, size, heading) =>
     turtle.jump(@x, @y).look(heading)

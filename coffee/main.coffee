@@ -5,20 +5,22 @@ FPS = 0
 
 # Globals
 speed = if FPS == 0 then 0 else 1000/FPS
-fractals = []
+fractals = {}
 ticker = 0
+id = 0
+clear = (f) -> delete fractals[f]
 
 $ ->
   go = ->
     ticker = ticker or setInterval(update, speed)
 
   stop = ->
-    fractals = []
+    fractals = {}
     $controls.removeClass('going').removeClass('paused')
     ticker = clearInterval(ticker)
 
   update = ->
-    fractal.step() for fractal in fractals
+    fractal.step() for id, fractal of fractals
 
   context = document.getElementById('canvas').getContext('2d')
   $controls = $('#controls')
@@ -29,16 +31,17 @@ $ ->
     context.canvas.height = window.innerHeight
     stop()
   ).trigger('resize')
-  
+
   $('#svg, #canvas, #dot, #halo').mouseup (e) ->
     e.stopPropagation()
-    if $controls.is('.paused') then fractals = []
+    if $controls.is('.paused') then fractals = {}
     $controls.removeClass('paused').addClass('going')
     x = e.pageX - document.body.scrollLeft
     y = e.pageY - document.body.scrollTop
-    fractals.push(new Current(context, x, y, HEADING, SIZE))
+    id++
+    die = ((i) -> () -> delete fractals[i]) id
+    fractals[id] = new Current(context, x, y, HEADING, SIZE, die)
     go()
-    false
 
   Current = Fractals[$body.attr('class')]
 
