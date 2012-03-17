@@ -14,9 +14,9 @@ class @ColorWheel
     this
   value: ->
     time = @t / RESOLUTION;
-    h = if _.isNumber @h then @h else @h.value(time)
-    s = if _.isNumber @s then @s else @s.value(time)
-    l = if _.isNumber @l then @l else @l.value(time)
+    h = if typeof @h == "number" then @h else @h.value(time)
+    s = if typeof @s == "number" then @s else @s.value(time)
+    l = if typeof @l == "number" then @l else @l.value(time)
     Color.hsl(h, s, l).toString()
 
 class @Turtle

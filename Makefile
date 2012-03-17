@@ -5,7 +5,7 @@ JS = java -jar tools/closure.jar
 # Order matters
 COFFEES = $(addprefix coffee/, $(addsuffix .coffee, ui dot glider more draw fractals main))
 LIBS = $(addprefix js/libs/, $(shell ls js/libs))
-BASE_LESS = $(addprefix less/, $(shell ls less | grep -vE "(main|more|card)"))
+BASE_LESS = $(addprefix less/, $(shell ls less | grep -vE "(main|more)"))
 
 .PHONY: media less coffee devel clean
 
@@ -19,7 +19,7 @@ watch:
 
 less:
 	make css/more.css
-	make css/card.css
+	make css/base.css
 	make css/main.css
 
 coffee:
@@ -34,10 +34,10 @@ js/main.min.js: $(COFFEES)
 css/more.css: $(BASE_LESS) less/more.less
 	$(LESS) less/more.less > css/more.css
 
-css/card.css: $(BASE_LESS) less/card.less
-	$(LESS) less/card.less > css/card.css
+css/base.css: $(BASE_LESS)
+	$(LESS) less/base.less > css/base.css
 
-css/main.css: css/more.css css/card.css less/main.less
+css/main.css: css/more.css less/main.less
 	$(LESS) less/main.less > css/main.css
 
 *.js:

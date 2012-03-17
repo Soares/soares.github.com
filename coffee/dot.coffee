@@ -54,6 +54,7 @@ closer = ->
 $ ->
   $dot = $('#dot')
   $halo = $('#halo')
+  $card = $('#card')
   cur.x = parseFloat($dot.attr('cx'))
   cur.y = parseFloat($dot.attr('cy'))
   $(window).mousemove (e) ->
