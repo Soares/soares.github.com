@@ -33,6 +33,7 @@ class Fractal
     return this
 
   step: (skip) =>
+    return if typeof @axiom == "string" # We've already died
     @pen.strokeStyle = @color
     symbol = @axiom.shift()
     if @cap - @iterations > 1
