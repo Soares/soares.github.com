@@ -1,3 +1,1 @@
-$ ->
-  $('.btn-group').button()
-  $('#fractals').css('display', 'block')
+$ -> $('#fractals').css('display', 'block')

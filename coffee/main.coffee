@@ -9,16 +9,10 @@ fractals = []
 ticker = 0
 
 $ ->
-  go = ->
-    ticker = ticker or setInterval(update, speed)
-
   stop = ->
-    fractals = []
     $controls.removeClass('going').removeClass('paused')
-    ticker = clearInterval(ticker)
-
-  update = ->
-    fractal.step() for fractal in fractals
+    fractal.stop() for fractal in fractals
+    fractals = []
 
   context = document.getElementById('canvas').getContext('2d')
   $controls = $('#controls')
@@ -36,8 +30,9 @@ $ ->
     $controls.removeClass('paused').addClass('going')
     x = e.pageX - document.body.scrollLeft
     y = e.pageY - document.body.scrollTop
-    fractals.push(new Current(context, x, y, HEADING, SIZE))
-    go()
+    frac = new Current(context, x, y, HEADING, SIZE)
+    fractals.push(frac)
+    frac.start(speed)
     false
 
   Current = Fractals[$body.attr('class')]
@@ -50,10 +45,10 @@ $ ->
   $('.control', $controls).click (e) ->
     if $controls.is('.going')
       $controls.removeClass('going').addClass('paused')
-      ticker = clearInterval(ticker)
+      fractal.stop() for fractal in fractals
     else
       $controls.removeClass('paused').addClass('going')
-      go()
+      fractal.start(speed) for fractal in fractals
 
   $('.clear', $controls).click (e) ->
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
