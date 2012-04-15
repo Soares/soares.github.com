@@ -187,4 +187,4 @@ blockquote small{-moz-opacity:0.5;-khtml-opacity:0.5;-webkit-opacity:0.5;opacity
 #controls.paused .control .icon-play{display:inline block;}
 #controls.paused .control .icon-pause{display:none;}
 #fractals{clear:both;float:left;display:none;margin-top:1em;}
-@media print{#card-container{display:none;} #business-card{display:block;}}
+@media only screen and (min-width:600px){.moved #dot,.moved #halo{visibility:visible;} .no-js #dot,.no-js #halo{visibility:hidden !important;} .main{float:left;}}@media print{#card-container{display:none;} #business-card{display:block;}}
