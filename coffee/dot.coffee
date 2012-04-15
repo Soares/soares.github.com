@@ -55,11 +55,11 @@ $ ->
   $dot = $('#dot')
   $halo = $('#halo')
   $card = $('#card')
+  $html = $('html')
   cur.x = parseFloat($dot.attr('cx'))
   cur.y = parseFloat($dot.attr('cy'))
   $(window).mousemove (e) ->
-    $dot.css('visibility', 'visible')
-    $halo.css('visibility', 'visible')
+    $html.addClass('moved')
     pos.x = e.pageX - document.body.scrollLeft
     pos.y = e.pageY - document.body.scrollTop
   tick = setInterval(closer, if FPS == 0 then 0 else 1000/FPS)

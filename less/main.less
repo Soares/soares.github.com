@@ -184,6 +184,11 @@ blockquote {
   margin-top: 1em;
 }
 
+@media only screen and (min-width: 600px) {
+  .moved #dot, .moved #halo { visibility: visible; }
+  .no-js #dot, .no-js #halo { visibility: hidden !important; }
+  .main { float: left; }
+}
 @media print {
   #card-container { display: none; }
   #business-card { display: block; }
