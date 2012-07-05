@@ -52,7 +52,6 @@ td{vertical-align:top;}
 .chromeframe{margin:0.2em 0;background:#ccc;color:black;padding:0.2em 0;}
 @media print{img{max-width:100% !important;} @page {margin:0.5cm;}p,h2,h3{orphans:3;widows:3;} h2,h3{page-break-after:avoid;} thead{display:table-header-group;} tr,img{page-break-inside:avoid;}}.ir{display:block;border:0;text-indent:-999em;overflow:hidden;background-color:transparent;background-repeat:no-repeat;text-align:left;direction:ltr;*line-height:0;}
 .ir br{display:none;}
-.hidden{display:none !important;visibility:hidden;}
 .visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
 .visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto;}
 .invisible{visibility:hidden;}
@@ -65,7 +64,6 @@ td{vertical-align:top;}
 .wrapper{width:90%;margin:0 5%;}
 @media only screen and (min-width:1140px){.wrapper{width:1026px;margin:0 auto;}}.ir{display:block;border:0;text-indent:-999em;overflow:hidden;background-color:transparent;background-repeat:no-repeat;text-align:left;direction:ltr;*line-height:0;}
 .ir br{display:none;}
-.hidden{display:none !important;visibility:hidden;}
 .visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
 .visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto;}
 .invisible{visibility:hidden;}
@@ -154,9 +152,9 @@ a.blue{color:#00a !important;}
 body img.only{width:0;height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
 body blockquote span.only{height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
 body blockquote small.only{width:0;height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
-body.fire img.only.fire,body.earth img.only.earth,body.snow img.only.snow,body.tri img.only.tri{width:64px;height:64px;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
-body.fire blockquote span.only.fire,body.earth blockquote span.only.earth,body.snow blockquote span.only.snow,body.tri blockquote span.only.tri{height:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
-body.fire blockquote small.only.fire,body.earth blockquote small.only.earth,body.snow blockquote small.only.snow,body.tri blockquote small.only.tri{height:100%;width:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
+body.fire img.only.fire,body.earth img.only.earth,body.snow img.only.snow,body.tri img.only.tri,body.hidden img.only .hidden{width:64px;height:64px;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
+body.fire blockquote span.only.fire,body.earth blockquote span.only.earth,body.snow blockquote span.only.snow,body.tri blockquote span.only.tri,body.hidden blockquote span.only.hidden{height:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
+body.fire blockquote small.only.fire,body.earth blockquote small.only.earth,body.snow blockquote small.only.snow,body.tri blockquote small.only.tri,body.hidden blockquote small.only.hidden{height:100%;width:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
 body.fire #halo{stroke:#fdd017;}
 body.earth #halo{stroke:#a5dd35;}
 body.snow #halo{stroke:#8ee;}
@@ -165,7 +163,7 @@ body.fire #dot{fill:#fa0;}
 body.earth #dot{fill:#a55d35;}
 body.snow #dot{fill:#6cc;}
 body.tri #dot{fill:#c2f;}
-body.fire a{color:#c94925;}body.fire a:visited{color:#e99b85;}
+body.fire a,body.hidden a{color:#c94925;}body.fire a:visited,body.hidden a:visited{color:#e99b85;}
 body.tri a{color:#963696;}body.tri a:visited{color:#cf7ccf;}
 body.earth a{color:#3eab1f;}body.earth a:visited{color:#82e367;}
 body.snow a{color:#0000ff;}body.snow a:visited{color:#8080ff;}
