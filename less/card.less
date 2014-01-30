@@ -5,19 +5,18 @@ a.blue { color: #00a !important; }
 
 #business-card {
   padding: 5%;
+  color: #888;
 }
 #business-card div {
   box-sizing: border-box;
   position: relative;
   width: 3.75in;
-  height: 2in;
-  padding: 1/8in;
+  height: 7/4in;
+  padding: 1/4in;
 
   img {
     width: 1in;
-    height: 1in;
     position: absolute;
-    bottom: .125in;
   }
 
   ul {
@@ -25,31 +24,27 @@ a.blue { color: #00a !important; }
     position: absolute;
     margin: 0;
     padding: 0;
-    bottom: .125in;
     li {
       line-height: 1;
       padding-top: 8px;
     }
   }
-
-  h1 {
-    font-size: 1em;
-    position: absolute;
-    top: .125in;
-    margin: 0;
-  }
 }
 
 #front {
-  ul { right: .125in; text-align: right; }
-  img, h1 { left: .125in; }
+  ul { top: 5/16in; right: 1/4in; text-align: right; }
+  img { top: 1/4in; left: 1/4in; }
   box-shadow: 1px 1px 1px 2px #ccc;
 }
 #back {
   font-family: monospace;
-  ul { left: .125in; text-align: left; }
-  h1 { right: .125in; }
-  img { right: .125in; border: 1px solid #ccc; box-sizing: border-box; }
+  ul { top: 1/2in; left: 1/4in; text-align: left; }
+  img {
+    top: 3/8in;
+    right: 1/4in;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
   box-shadow: -1px 1px 1px 2px #ccc;
 }
 #front { float: left; }
@@ -58,4 +53,5 @@ a.blue { color: #00a !important; }
 @media print {
   #business-card div { box-shadow: none; border: 1px solid #ccc; }
   #front { page-break-after: always; margin-bottom: 1em; }
+  @page { size: landscape; }
 }

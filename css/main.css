@@ -137,22 +137,20 @@ a.red{color:#F00 !important;}
 a.purple{color:#80d !important;}
 a.green{color:#0a0 !important;}
 a.blue{color:#00a !important;}
-#business-card{padding:5%;}
-#business-card div{box-sizing:border-box;position:relative;width:3.75in;height:2in;padding:0.125in;}#business-card div img{width:1in;height:1in;position:absolute;bottom:.125in;}
-#business-card div ul{list-style:none;position:absolute;margin:0;padding:0;bottom:.125in;}#business-card div ul li{line-height:1;padding-top:8px;}
-#business-card div h1{font-size:1em;position:absolute;top:.125in;margin:0;}
-#front{box-shadow:1px 1px 1px 2px #ccc;}#front ul{right:.125in;text-align:right;}
-#front img,#front h1{left:.125in;}
-#back{font-family:monospace;box-shadow:-1px 1px 1px 2px #cccccc;}#back ul{left:.125in;text-align:left;}
-#back h1{right:.125in;}
-#back img{right:.125in;border:1px solid #ccc;box-sizing:border-box;}
+#business-card{padding:5%;color:#888;}
+#business-card div{box-sizing:border-box;position:relative;width:3.75in;height:1.75in;padding:0.25in;}#business-card div img{width:1in;position:absolute;}
+#business-card div ul{list-style:none;position:absolute;margin:0;padding:0;}#business-card div ul li{line-height:1;padding-top:8px;}
+#front{box-shadow:1px 1px 1px 2px #ccc;}#front ul{top:0.3125in;right:0.25in;text-align:right;}
+#front img{top:0.25in;left:0.25in;}
+#back{font-family:monospace;box-shadow:-1px 1px 1px 2px #cccccc;}#back ul{top:0.5in;left:0.25in;text-align:left;}
+#back img{top:0.375in;right:0.25in;border:1px solid #ccc;box-sizing:border-box;}
 #front{float:left;}
 #back{float:right;}
-@media print{#business-card div{box-shadow:none;border:1px solid #ccc;} #front{page-break-after:always;margin-bottom:1em;}}a{-webkit-transition:color 0.8s;-moz-transition:color 0.8s;-ms-transition:color 0.8s;-o-transition:color 0.8s;-o-transition:color 0.8s;transition:color 0.8s;-webkit-transition:color 0.8s;-moz-transition:color 0.8s;-ms-transition:color 0.8s;-o-transition:color 0.8s;-o-transition:color 0.8s;transition:color 0.8s;}
+@media print{#business-card div{box-shadow:none;border:1px solid #ccc;} #front{page-break-after:always;margin-bottom:1em;} @page {size:landscape;}}a{-webkit-transition:color 0.8s;-moz-transition:color 0.8s;-ms-transition:color 0.8s;-o-transition:color 0.8s;-o-transition:color 0.8s;transition:color 0.8s;-webkit-transition:color 0.8s;-moz-transition:color 0.8s;-ms-transition:color 0.8s;-o-transition:color 0.8s;-o-transition:color 0.8s;transition:color 0.8s;}
 body img.only{width:0;height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
 body blockquote span.only{height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
 body blockquote small.only{width:0;height:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;-moz-opacity:0;-khtml-opacity:0;-webkit-opacity:0;opacity:0;}
-body.fire img.only.fire,body.earth img.only.earth,body.snow img.only.snow,body.tri img.only.tri,body.hidden img.only .hidden{width:64px;height:64px;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
+body.fire img.only.fire,body.earth img.only.earth,body.snow img.only.snow,body.tri img.only.tri,body.hidden img.only.hidden{width:64px;height:64px;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
 body.fire blockquote span.only.fire,body.earth blockquote span.only.earth,body.snow blockquote span.only.snow,body.tri blockquote span.only.tri,body.hidden blockquote span.only.hidden{height:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
 body.fire blockquote small.only.fire,body.earth blockquote small.only.earth,body.snow blockquote small.only.snow,body.tri blockquote small.only.tri,body.hidden blockquote small.only.hidden{height:100%;width:100%;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;-moz-opacity:1;-khtml-opacity:1;-webkit-opacity:1;opacity:1;}
 body.fire #halo{stroke:#fdd017;}
