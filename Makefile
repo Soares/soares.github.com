@@ -1,5 +1,4 @@
 LESS = tools/lessc --compress --O2
-CSS = tools/cleancss
 COFFEE = tools/coffee -clp
 JS = java -jar tools/closure.jar
 # Order matters
