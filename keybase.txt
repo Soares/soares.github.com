@@ -1,0 +1,82 @@
+==================================================================
+https://keybase.io/so8res
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://so8r.es
+  * I am so8res (https://keybase.io/so8res) on keybase.
+  * I have a public key with fingerprint D44F 9407 513A 18E4 6CDE  E43F 6E2E 054D CFDD FBBB
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.7"
+        },
+        "key": {
+            "fingerprint": "d44f9407513a18e46cdee43f6e2e054dcfddfbbb",
+            "host": "keybase.io",
+            "key_id": "6E2E054DCFDDFBBB",
+            "uid": "f03960bcd285b878c0cdf453d9876019",
+            "username": "so8res"
+        },
+        "merkle_root": {
+            "ctime": 1426560241,
+            "hash": "5f32c2f4c9c61dd93b92f5a9e1e5add9c6bf269b2e115bfec349377c5832e245e5bd6d91a419f7d314445e689b9d970dd87534ca43afd966e19b98aa5a39ab87",
+            "seqno": 178233
+        },
+        "service": {
+            "hostname": "so8r.es",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1426560388,
+    "expire_in": 157680000,
+    "prev": "acdae21a9417753bcd64a3ab7aecbce27d6854be67568924e01b88e9a6d02945",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFVkn9MVWUYx+ESOEQ3hUgUBDwiEEM8v38QqcCFWIQXMbRWeT3nvO+59/DjHjj3
+glx+qENhOCUIsQFBS4akOMJhpIYBtoExpOQPRBdYQWXpCBqzJDboHEZL37/e93m+
+z/N+P+/zVq91czG42qLcU76bWOh2HfpdcElfdfZEESIowIlEFyFilgxtDn1n47Mh
+Eo1kQqfA22GUrATbFACjMuzBK5pIJB+qdlmxaSo0iolikJJIXa4XS7LNAtUcVdZ7
+IYAkJY5EGQojeIyFJC0CCElCoiEOUYoEogSAJAiC1tKq2B3P3Yos9zTLQIvSCXiC
+pjfGJxqNiXFxcVoubzkhoQRHo4IIcJYSWIYVURFIJEUAjmVoFON0oR2qK0h2hVWh
+XXebDdXMLGhWFWUZWXTIugAjcZqiUZzEND+83aqVUBKBi7hEipxIYwBwhMDhEsVz
+EIMUr51FWpBwmhNwiGGUIEGRIDmCYUSKJXCIkxSkBEADDuNJjJMYQGAkqQVplhM4
+wDEoACxDEaTIkwQvAY6mIaZlWJ6neILjNSINwA5zbYpmjmFxgijRz2q+LELdt/5o
+z7BFaXCRSI6qOBRRydKCVocjJ1rndThzdNFhKJhXylvNgmwD2rSeHSemSZ9/C4Jl
+IxFYkCOr0CzrCoqhWVRb+j0wX+vJi4CHOMZzJMZoLNosaJIneIHhoSiIEGcAzVKk
+AGmG0rBxEqKYwLKQ42mA4hxJ/U9Iaz55i84iW2y8I0+FSMlJQ8ALLq4GFw93g/5f
+XVZ7rvvvE0/3rnN5v8I7paGsyeektXDq4Kpj23orULR27M73e8B48mxpWmlvy7zz
+cPpS/ZFfr8VF119y+nfUTqRbij3W15rCIxunnvpdPWMdDd/4KPHoYPmTXkvdqMlU
+PDA/feyn86kRx0O3vvPtza34gMBs2vLXvjR5znq1tepLee1T+dTfEfU/Do9GN4x4
+r04s6h18WG1w2xx7ztd6avRK67ZydvHGH6/cFD8N3R708uPcV2eC99440jze2B5j
+3F04ePHnJufpzNnAX7p93PwvvJhUKNbEZNxpNxp9FmL6G2fuXpn6pGYvumHhhPNM
+E9FTP5lQLee+1rJZ8ewiKmzZO/cZmj/2C8h43et+6lT55cmvWOf1QFuBc6zjMfjs
+1v7U7YVezfvfTSYDx2//M7Z4sDNM7ayMfevcS0+Y8pCOvrk9ZYGmpKFqS+7ZFG/f
+jRc+v7SUVes+fKvJNFw329Zszg7aMTi/Zql/se/rb8IaG96rCD3UbeaOj3sPDyHj
+PY82fTQVVtBy4Fq/mub3dlBVyj2P8HbXtjovKnAumXhw3cDFJkUvzkRMztwdHcpw
+r44xlZm6LvuF7zRWZiw1/rBFqGzrO9B9dGh9SCe9wdMfivfnlN0mv46AXdXD54uK
+q3pTa3Y1TIVGPFxz780PSj+MfyN+sLanaPq3ka7TF2/3/zlUf8gekpc4siXpgSVm
+IM13R+MXE/8C
+=Jw2O
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/so8res
+
+==================================================================
