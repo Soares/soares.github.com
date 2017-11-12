@@ -127,7 +127,7 @@ blockquote small{display:block;line-height:18px;color:#999999;}blockquote small:
 blockquote:before,blockquote:after{content:"";}
 #overlay{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;margin-top:2em;z-index:1;}
 #card-container{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:-moz-none;-o-user-select:-moz-none;user-select:none;}
-.main{background:rgba(250, 250, 250, 0.7);box-sizing:border-box;margin:0 auto;max-width:320px;overflow:auto;padding:3%;position:relative;z-index:1;}
+.main{background:rgba(250, 250, 250, 0.7);box-sizing:border-box;margin:0 auto;max-width:320px;overflow:auto;padding:3% 3% 1% 3%;position:relative;z-index:1;}
 @media only screen and (min-width:768px){.main{float:left;}}#more{text-align:center;font-size:1.2;}
 #more table{margin:2em auto;empty-cells:show;}
 #more #to-card{margin-top:1.5em;float:left;}
@@ -137,6 +137,7 @@ a.red{color:#F00 !important;}
 a.purple{color:#80d !important;}
 a.green{color:#0a0 !important;}
 a.blue{color:#00a !important;}
+small.hint{opacity: 0.3;clear: both;display:block;text-align: right;padding-top: 1em;font-size: 80%;}
 #business-card{padding:5%;color:#888;}
 #business-card div{box-sizing:border-box;position:relative;width:3.75in;height:1.75in;padding:0.25in;}#business-card div img{width:1in;position:absolute;}
 #business-card div ul{list-style:none;position:absolute;margin:0;padding:0;}#business-card div ul li{line-height:1;padding-top:8px;}
