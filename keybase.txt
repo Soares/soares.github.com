@@ -4,75 +4,51 @@ https://keybase.io/so8res
 
 I hereby claim:
 
-  * I am an admin of http://so8r.es
+  * I am an admin of https://soares.github.io
   * I am so8res (https://keybase.io/so8res) on keybase.
-  * I have a public key with fingerprint D44F 9407 513A 18E4 6CDE  E43F 6E2E 054D CFDD FBBB
+  * I have a public key ASBcNc_eYNe0XV82H1RQZ7tryX0ny0oRCMuzXlTE7DoFXgo
 
 To do so, I am signing this object:
 
 {
-    "body": {
-        "client": {
-            "name": "keybase.io node.js client",
-            "version": "0.7.7"
-        },
-        "key": {
-            "fingerprint": "d44f9407513a18e46cdee43f6e2e054dcfddfbbb",
-            "host": "keybase.io",
-            "key_id": "6E2E054DCFDDFBBB",
-            "uid": "f03960bcd285b878c0cdf453d9876019",
-            "username": "so8res"
-        },
-        "merkle_root": {
-            "ctime": 1426560455,
-            "hash": "5d35796bdc0cdb0a557d937bac023c3cdb61bd2e057e2b892b9361dc97caf586e3b03de457b0cc1ec1335f2a6fc5fd0dccc04f370ee29866999568507bbcef48",
-            "seqno": 178236
-        },
-        "service": {
-            "hostname": "so8r.es",
-            "protocol": "http:"
-        },
-        "type": "web_service_binding",
-        "version": 1
+  "body": {
+    "key": {
+      "eldest_kid": "0101b3a683e38521a8486ba55c3d1ea0d566a9fcb1b5e94bc68051055bbc3e6cf72e0a",
+      "host": "keybase.io",
+      "kid": "01205c35cfde60d7b45d5f361f545067bb6bc97d27cb4a1108cbb35e54c4ec3a055e0a",
+      "uid": "f03960bcd285b878c0cdf453d9876019",
+      "username": "so8res"
     },
-    "ctime": 1426560504,
-    "expire_in": 157680000,
-    "prev": "a56279207bf16ddd27ee98cb5c7a789bb003f9867cd239288285bc3ea1f923cb",
-    "seqno": 7,
-    "tag": "signature"
+    "merkle_root": {
+      "ctime": 1676569827,
+      "hash": "d9cb10b4e3ec084739253cdb02136ff2c8cb3f074a07a0b0b020e69fd4c074310e3c6867f20f1bf21c6c86e388e7326ba68f1675f2dc93a2dc24d0506d7e21aa",
+      "hash_meta": "26b5ae3dccf5f9aef453f1f207b5b3bc5a8ca3d6aaa92b606c9465563eca3187",
+      "seqno": 24058961
+    },
+    "service": {
+      "entropy": "Wii50Xjrhlm8r9ctQQxgDPFR",
+      "hostname": "soares.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.3"
+  },
+  "ctime": 1676569831,
+  "expire_in": 504576000,
+  "prev": "715dd706534c243230c4f1444bdc8d7a401d272bfbbeb410dad777b1cb5d2662",
+  "seqno": 33,
+  "tag": "signature"
 }
 
 which yields the signature:
 
------BEGIN PGP MESSAGE-----
-Version: GnuPG v1
-
-owFVkntQVFUcx3dX0BAJU6RhRFrvho8Rdu7ee899bDDWCpqPMpkURXK753Hhtute
-3F1XNkVHHfM5jDBgSjPEGCqTZerEQ2om1woo3UxFVMpsMC1SEoPJnti9Dk16/jrn
-d76/3/l+fr+zO2GEyWL22WNfOHv1r4/Mp3uhafGo6t/XUlDDYcq5lkJelfiCxs4n
-rySUk/KQMJQDxK5qVp+Gif21gHVYk0GFiD+gaj5dRdsFu0CVZRhyI1lRfUXEX+JX
-jVoU5jhF4mgBOFjZIRKOR5gQjlV4whAacBgpGCsQQr1ksRYIPvIq9aCmW8V6lM9l
-cnV9zqzZOTmzXS6Xfrf6wYVCsxJPQ4QZEUBREBGNsMIBFkuiwNMOyRAGiH8YKaCJ
-fhIw3K4kfo+XuP2a9gAZBVVD4OAYHvA0B4DuRw4U6ykAs0CQeIiNypCWARCwxApQ
-RjTDIlaP8Q6IDRqBMFCUGCixvAMjSUCyAkSesJBmMeGAAGmEHAQ5WBYojMwrCCiY
-xgghmlNYgSaEkUSelyQJ8CKgBQgRUThRBwiQVT5NNyeIDMuXGWd/SEXE8G007SE2
-uw6XQZX4taCGNK8eLA4GS5wGbzBcYojWEOgeTj/ohqoP69N6eJwOXfpoLwDNZVCk
-tET1E7dqKIDAi7S+jHdISK8pA54RJEZ3rDh4jDEjECKJCAIkyIIoQUjTrKKjCfqQ
-WIkRRWNUiCWyQ5H0FsL/CQXdp1xksKhFPjm42k+osu2W1BiT2WIaGWsx/qtpdNzY
-/z7xxK2JQyDKN0czjo74w/Vx+c/F5y7YvroshmOXvj0lSK/MXn449+KKrmlHXq/L
-vJty/wp6DFknbb186tuOnb2/eAoiF6pqpda8tPy894Pe+bac56KbKxuWD0YrQTIq
-H91uEadY3dtsL2VlLrpf2zXvZvepwgVHKl6d1T3h7/zd0Zv9zRXFN55g3jhpar6n
-XT/omF+dtFQLb9+fKNc/PrltrnJxxrj6yJwdc+LT9l6piitpya7Cq6rzUyubvz7s
-OV4XbE0y26Y3XR17rnEUtN+pmV7UVH8gvXfxos/bv/HGPdl52/Zs/z+3tn36zB7t
-izGhSNI7kf63UlKlTduSlnVcMh8aWPNrz+KZY1ZUNtV3cerZsvUdT383Pj8hsSlr
-Se++DecPzTyQbR0ZoG9cu2s5cPQOu+xsT3SXWjh1x5eR1p/GvnK9qi29D4x3pavr
-19UR21B/V+jFgaIs4RrZH//yiNsLj+/pq1kyKcZ2f8lc81OFaRYw5lIp9qxLmDgu
-uWNh/PM/HEuV548Obkqx/slsnfzu4I/3CjyntyzYrB6LSYuZNNH24dTOlkDymY7z
-FZ39V2v4tPrcqUNkRduMKXvnlX3fODnzs5hPSt+syzu58cStO7aD9tSajXM1NiF5
-HxrcsCXS4FkT29N+N+zdPFBb6mwJRU4U9DGzR7nOUFnv1TinObuPNq43j/yt74Py
-BvNOa/eEfwE=
-=obix
------END PGP MESSAGE-----
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgXDXP3mDXtF1fNh9UUGe7a8l9J8tKEQjLs15UxOw6BV4Kp3BheWxvYWTESpcCIcQgcV3XBlNMJDIwxPFES9yNekAdJyv7vrQQ2td3sctdJmLEIE/5
+XjG0AFl+PmGmacNNF5Fk/xhJnROLL4+gO0fXbJibAgHCo3NpZ8RA63EyGtGTSwbvPJ0FM2BVCODnwEXRF0mekIXB6TlYie9njgH45YFwNarweyH+9qEd8p8Lk8nPj38J2GbNxCobC6hzaWdfdHlwZSCkaGFzaIKk
+dHlwZQildmFsdWXEIDWx6eLPfQxj1O7hHI3TFg5wJrkOj03YpgIZF5Z+yExao3RhZ80CAqd2ZXJzaW9uAQ==
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
