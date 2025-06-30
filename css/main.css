@@ -597,7 +597,15 @@ input[type="submit"].btn::-moz-focus-inner {
 .btn.hidden {
   background-color: black !important;
   background-repeat: repeat-x;
-  border-color: #00348e #00348e hsl(218, 100%, 25.5%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0c900", endColorstr="#ad9c00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#080808), to(#000000));
+  background-image: -moz-linear-gradient(top, #080808, #000000);
+  background-image: -ms-linear-gradient(top, #080808, #000000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #080808), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #080808, #000000);
+  background-image: -o-linear-gradient(top, #080808, #000000);
+  background-image: linear-gradient(#080808, #000000);
+  border-color: #000000 #000000 #000000;
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
   -webkit-font-smoothing: antialiased;
