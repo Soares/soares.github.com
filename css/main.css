@@ -594,7 +594,7 @@ input[type="submit"].btn::-moz-focus-inner {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
   -webkit-font-smoothing: antialiased;
 }
-.btn.black {
+.btn.hidden {
   background-color: hsl(0, 0%, 0%) !important;
   background-repeat: repeat-x;
   border-color: #00348e #00348e hsl(218, 100%, 25.5%);
@@ -791,6 +791,9 @@ a.green {
 }
 a.blue {
   color: #00a !important;
+}
+a.hidden {
+  color: #000 !important;
 }
 body img.only {
   width: 0;
