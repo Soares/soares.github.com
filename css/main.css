@@ -809,6 +809,7 @@ body blockquote small.only {
 }
 body button .invisible {
   display: none;
+  width: 0;
 }
 body.fire img.only.fire,
 body.earth img.only.earth,
