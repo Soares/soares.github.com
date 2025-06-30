@@ -1,5 +1,4 @@
 @import "more.less";
-@import "card.less";
 @wait: .8s;
 
 @red: lighten(#d64, 15%);
@@ -14,6 +13,10 @@
 a {
   .animate(color, @wait);
 }
+a.red { color: #F00 !important; }
+a.purple { color: #80d !important; }
+a.green { color: #0a0 !important; }
+a.blue { color: #00a !important; }
 
 body {
   img.only { width: 0; height: 0; .opacity(0); }
@@ -95,11 +98,6 @@ body {
 #dot, #halo {
   .opacity(.7);
   visibility: hidden;
-}
-
-#business-card {
-  display: none;
-  padding-top: 0;
 }
 
 #card {
@@ -191,8 +189,4 @@ blockquote {
   .moved #dot, .moved #halo { visibility: visible; }
   .no-js #dot, .no-js #halo { visibility: hidden !important; }
   .main { float: left; }
-}
-@media print {
-  #card-container { display: none; }
-  #business-card { display: block; }
 }
