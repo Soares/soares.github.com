@@ -1,4 +1,4 @@
-LESS = tools/lessc --compress --O2
+LESS = node_modules/less/bin/lessc --compress --O2
 COFFEE = tools/coffee -clp
 JS = java -jar tools/closure.jar
 # Order matters
